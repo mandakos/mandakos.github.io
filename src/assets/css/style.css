@@ -1,0 +1,63 @@
+
+:root {
+
+  /* Colors */
+  --white: #fff;
+  --light-color: #F5F3F5;
+  --dark-color: #1F3B2C;
+  --accent-color: #9D8A76;
+
+  /* Gutters */
+  --gutter-sm: 1.5rem;
+  --gutter-md: 4rem;
+  --gutter-lg: 10rem;
+  --gutter-xl: 20rem;
+
+  /* Typography */
+  --font-family: 'Crimson Text', serif;
+  --h1-size: 3rem;
+  --h2-size: 2rem;
+  --h3-size: 1.8rem;
+  --h4-size: 1.5rem;
+  --h5-size: 1.5rem;
+  --font-size: 0.9rem;
+  --line-height: 1.5;
+
+  /* Media */
+  --mobile-width: 480px;
+  --tablet-width: 720px;
+  --desktop-width: 990px;
+}
+
+body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+a {
+  color: var(--accent-color);
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  color: var(--dark-color);
+  font-family: var(--font-family);
+  font-size: var(--h1-size);
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  text-shadow: none;
+}
+::-moz-selection {
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  text-shadow: none;
+}

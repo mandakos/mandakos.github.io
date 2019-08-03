@@ -1,5 +1,5 @@
 <template>
-<div class="frontpage" v-bind:style="{'background-image': 'url(' + fields.header_image.url +')' }">
+<div class="frontpage">
   <h1>
     {{ $prismic.richTextAsPlain(fields.title) }}
   </h1>
@@ -18,7 +18,7 @@ export default {
     }
   },
   methods: {
-    getContent () {
+    getContent (uid) {
       this.$prismic.client.getSingle('frontpage')
         .then((document) => {
           if (document) {
@@ -46,13 +46,11 @@ export default {
 .frontpage {
   background-size: cover;
   background-position: bottom;
-  padding: 20rem;
+  padding: 10rem;
   text-align: center;
 }
 h1 {
-  color: white;
   margin: auto;
-  text-shadow: 0 0.2rem 1rem black;
 }
 ul {
   list-style-type: none;

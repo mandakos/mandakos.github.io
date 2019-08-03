@@ -26,8 +26,8 @@ export default new Router({
     },
     {
       path: '/:uid',
-      name: 'bird-post',
-      component: () => import('./views/BirdPost.vue')
+      name: 'blog-post',
+      component: () => import('./views/BlogPost.vue')
     }
   ]
 })

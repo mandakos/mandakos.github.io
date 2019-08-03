@@ -1,13 +1,13 @@
 <template>
-  <div class="bird-post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.image.url + ')' }]">
-    <span class="bird-post-date">
+  <div class="post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.image.url + ')' }]">
+    <span class="post-date">
       {{ fields.date_formatted }}
     </span>
-    <div class="bird-post-color-fade" v-bind:style="{'background': 'radial-gradient(' +  fields.bg_color + ' 50%, rgba(255,255,255, 0) 70%)'}">
-      <h1 class="bird-post-title" v-bind:style="{ color: fields.text_color }">
+    <div class="post-color-fade" v-bind:style="{'background': 'radial-gradient(' +  fields.bg_color + ' 50%, rgba(255,255,255, 0) 70%)'}">
+      <h1 class="post-title" v-bind:style="{ color: fields.text_color }">
         {{ $prismic.richTextAsPlain(fields.title) }}
       </h1>
-      <p class="bird-post-story" v-bind:style="{ color: fields.text_color }">
+      <p class="post-story" v-bind:style="{ color: fields.text_color }">
         {{ $prismic.richTextAsPlain(fields.story) }}
       </p>
     </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'BirdPost',
+  name: 'BlogPost',
   data () {
     return {
       documentId: '',
@@ -33,16 +33,16 @@ export default {
   },
   methods: {
     getContent (uid) {
-      this.$prismic.client.getByUID('bird_post', uid)
+      this.$prismic.client.getByUID('blog_post', uid)
         .then((document) => {
           if (document) {
             this.documentId = document.id
-            this.fields.title = document.data.bird_post_title
-            this.fields.story = document.data.bird_post_story
-            this.fields.bg_color = document.data.bird_post_bg
-            this.fields.text_color = document.data.bird_post_color
-            this.fields.date = document.data.bird_post_date
-            this.fields.image = document.data.bird_post_image
+            this.fields.title = document.data.title
+            this.fields.story = document.data.story
+            this.fields.bg_color = document.data.bg_color
+            this.fields.text_color = document.data.text_color
+            this.fields.date = document.data.date
+            this.fields.image = document.data.image
             this.fields.date_formatted = Intl.DateTimeFormat('fi-FI',{
               year: 'numeric',
               month: 'long',
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style>
-.bird-post-wrapper {
+.post-wrapper {
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -73,23 +73,23 @@ export default {
   width: 100%;
 }
 
-.bird-post-color-fade {
-  position: fixed;
+.post-color-fade {
+  position: relative;
   bottom: 0;
   margin: auto;
   padding: 6rem;
+  opacity: 0.9;
   text-align: center;
 }
 
-.bird-post-color-fade p {
+.post-color-fade p {
   max-height: 9rem;
   overflow: hidden;
-  position: relative;
   margin-right: 0.6rem;
 }
 
-.bird-post-color-fade p::after {
-  position: absolute;
+.post-color-fade p::after {
+  position: relative;
   content: "...";
   margin-bottom: -0.1rem;
   bottom: 0;
@@ -97,7 +97,7 @@ export default {
 }
 
 @media only screen and (min-width: 990px) {
-  .bird-post-color-fade {
+  .post-color-fade {
     left: 0;
     right: auto;
     padding: 4rem 8rem;

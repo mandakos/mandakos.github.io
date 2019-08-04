@@ -2,15 +2,15 @@
   <div v-if="posts.length !== 0" class="blog-list-wrapper">
     <!-- Template for blog posts -->
     <div v-for="post in posts" :key="post.id" class="blog-list-item-wrapper" v-bind:post="post">
-      <router-link :to="linkResolver(post)">
         <div class="blog-list-item" v-bind:style="[{'background-color': post.data.bg_color},{'background-image': 'url(' + post.data.image.url + ')' }]">
+          <p class="blog-list-date">{{ post.data.date }}</p>
           <div class="text-overlay">
-            <p class="blog-list-date">{{ post.data.date }}</p>
             <h2 class="blog-list-title">{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
-            <p class="blog-list-short">{{ post.data.short }}<button>Lue lisää</button></p>
+            <router-link :to="linkResolver(post)" class="read-more-btn-link">
+              <div class="btn read-more-btn">Avaa</div>
+            </router-link>
           </div>
         </div>
-      </router-link>
     </div>
   </div>
   <!-- If no blog posts return message -->

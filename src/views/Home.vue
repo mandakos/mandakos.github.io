@@ -56,6 +56,5 @@ export default {
 h1 {
   margin: auto;
   margin-bottom: 10rem;
-  margin-top: 10rem;
 }
 </style>

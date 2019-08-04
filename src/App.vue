@@ -25,7 +25,7 @@ export default {
     }
   },
   methods: {
-    getContent (uid) {
+    getContent () {
       this.$prismic.client.getSingle('frontpage')
         .then((document) => {
           if (document) {
@@ -37,10 +37,10 @@ export default {
     }
   },
   created () {
-    this.getContent(this.$route.params.uid)
+    this.getContent()
   },
   beforeRouteUpdate (to, from, next) {
-    this.getContent(to.params.uid)
+    this.getContent()
     next()
   }
 }

@@ -8,20 +8,24 @@
   --accent-color: #9D8A76;
 
   /* Gutters */
+  --gutter-xs: 0.5rem;
   --gutter-sm: 1.5rem;
   --gutter-md: 4rem;
   --gutter-lg: 10rem;
   --gutter-xl: 20rem;
 
   /* Typography */
-  --font-family: 'Crimson Text', serif;
+  --font-family-heading: 'Crimson Text', serif;
+  --font-family: 'Lato', sans-serif;
   --h1-size: 3rem;
-  --h2-size: 2rem;
+  --h2-size: 1.8rem;
   --h3-size: 1.8rem;
   --h4-size: 1.5rem;
   --h5-size: 1.5rem;
   --font-size: 0.9rem;
-  --line-height: 1.5;
+  --font-weight-black: 900;
+  --line-height: 1.8;
+  --letter-spacing: 0.4rem;
 }
 
 body {
@@ -34,14 +38,22 @@ body {
   transition-delay: 0.5s;
 }
 
+#app {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .content {
-  margin-left: var(--gutter-md);
+  margin-left: var(--gutter-sm);
+  min-height: 100vh;
   padding: var(--gutter-sm);
+  padding-bottom: var(--gutter-lg);
   text-align: center;
   width: 100%;
 }
 
-#app {
+.app-top {
   display: flex;
 }
 
@@ -58,6 +70,14 @@ h1 {
   color: var(--dark-color);
   font-family: var(--font-family);
   font-size: var(--h1-size);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-spacing);
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-size: var(--h2-size);
+  font-weight: var(--font-weight-black);
 }
 
 ::selection {
@@ -72,10 +92,13 @@ h1 {
 /* Side navigation */
 .sideNavigation {
   background-color: var(--dark-color);
+  background: radial-gradient(circle, transparent, var(--dark-color)),
+    linear-gradient(to right, transparent, var(--accent-color));
+  box-shadow: 0 0.3rem 0.4rem rgba(25, 25, 25, 0.85);
   bottom: 0;
   height: 100%;
   left: 0;
-  position: fixed;
+  position: absolute;
   overflow-x: hidden;
   padding-top: 60px;
   transition: all 1s;
@@ -106,66 +129,220 @@ h1 {
 }
 
 .toggleNav {
+  bottom: 50%;
+  margin-left: -1.4rem;
+  opacity: 0.8;
+  position: fixed;
+  transition: all 0.4s ease-out 0s;
+  width: 3rem;
   z-index: 2;
-  position: absolute;
-  top: 0;
-  bottom: auto;
-  margin: 1rem;
-  width: var(--gutter-md);
+}
+
+.toggleNav:hover {
+  margin-left: 0;
+}
+
+.toggleNav.active {
+  margin-left: 6rem;
+}
+
+.toggleNav>svg {
+  filter: drop-shadow( 0 0 0.3rem rgba(0, 0, 0, 0.6));
 }
 
 .toggleNav>svg>path {
-  stroke: var(--dark-color);
-  transition: all 1s;
+  stroke: var(--white);
+  transition: all 0.4s ease-out 0s;
 }
+
+.toggleNav:hover>svg>path {
+  stroke: var(--white);
+}
+
+.toggleNav.active {
+  transform: rotateY(180deg);
+}
+
 .toggleNav.active>svg>path {
   stroke: var(--light-color);
-  transition: all 1s;
+  transition: all 0.4s ease-out 0s;
 }
 
 /* Blog List */
 .blog-list-wrapper {
+  align-content: stretch;
   display: flex;
   flex-flow: wrap;
 }
 
 .blog-list-item-wrapper {
-  border: var(--gutter-sm) solid transparent;
-  height: 20rem;
-  padding-bottom: 100%;
+  border-radius: 0.2rem;
+  box-shadow: 0 0.3rem 0.4rem rgba(25, 25, 25, 0.85);
+  flex: 1;
+  margin: 1rem;
+  padding-bottom: 60%;
   position: relative;
-  width: 100%;
+  transition: all 0.4s ease-out 0s;
+  min-width: 40%;
 }
 
 @media only screen and (min-width: 770px) {
   .blog-list-item-wrapper {
-    padding-bottom: 50%;
-    width: 50%;
+    padding-bottom: 40%;
+    min-width: 29%;
   }
 }
 
 @media only screen and (min-width: 1100px) {
   .blog-list-item-wrapper {
     padding-bottom: 25%;
-    width: 25%;
+    min-width: 20%;
   }
 }
 
 .blog-list-item-wrapper a {
   display: block;
   height: 100%;
+  transition: all 0.4s ease-out 0s;
 }
 
+.blog-list-item-wrapper a:hover {
+  color: black;
+}
+
+
 .blog-list-item {
-  align-items: center;
+  color: var(--light-color);
   background-size: cover;
   background-position: center;
+  border-radius: 0.2rem;
   bottom: 0;
-  display: flex;
   height: 100%;
-  justify-content: center;
   left: 0;
+  opacity: 0.8;
+  overflow: hidden;
   position: absolute;
   right: 0;
   top: 0;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.blog-list-item:hover {
+  opacity: 1;
+  transform: scale(1.01);
+}
+
+.blog-list-item .text-overlay h2 {
+  color: var(--light-color);
+  text-shadow: 0 2px 10px rgba(25, 25, 25, 0.65);
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.blog-list-item:hover .text-overlay h2 {
+  text-shadow: 0 5px 10px rgba(25, 25, 25, 0.95);
+}
+
+.blog-list-item .text-overlay .blog-list-short {
+  display: none;
+}
+
+@media only screen and (min-width: 770px) {
+  .blog-list-item .text-overlay {
+    background: radial-gradient(circle, transparent 70%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(bottom, rgba(91, 82, 82, 0.18), rgba(127, 127, 127, 0.2));
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    transition: all 0.5s ease-in-out 0s;
+    width: 100%;
+  }
+
+  .blog-list-item .text-overlay p {
+    display: block;
+  }
+
+  .blog-list-item .text-overlay button {
+    opacity: 0;
+    transition: all 0.5s ease-in-out 0s;
+  }
+
+  .blog-list-item:hover .text-overlay button {
+    opacity: 1;
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-color);
+  background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7));
+  color: var(--light-color);
+  padding: var(--gutter-md);
+}
+
+/* Blog Post */
+.post-wrapper {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: auto;
+  width: 100%;
+}
+
+.post-color-fade {
+  box-shadow: 0 0 10rem rgba(25, 25, 25, 0.4);
+  margin: auto;
+  padding: 6rem;
+  text-align: center;
+}
+
+.post-color-fade p {
+  max-height: 9rem;
+  overflow: hidden;
+  margin-right: 0.6rem;
+}
+
+.post-color-fade p::after {
+  position: relative;
+  content: "...";
+  margin-bottom: -0.1rem;
+  bottom: 0;
+  right: 0;
+}
+
+@media only screen and (min-width: 990px) {
+  .post-color-fade {
+    left: 0;
+    right: auto;
+    padding: 4rem 8rem;
+    max-width: 50%;
+  }
+}
+
+.post-toolbar {
+  align-items: center;
+  background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  color: var(--light-color);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--gutter-xs) var(--gutter-sm);
+  position: relative;
+  top: auto;
+  width: 100%;
+}
+
+.post-toolbar>.button-close {
+  transition: all 0.5s ease-in-out 0s;
+  width: 2rem;
+}
+
+.post-toolbar>.button-close:hover svg>path {
+  stroke: var(--accent-color);
+}
+
+.post-toolbar>.button-close svg>path {
+  stroke: var(--light-color);
 }

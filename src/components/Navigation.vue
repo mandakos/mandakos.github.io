@@ -1,18 +1,15 @@
 <template>
   <nav class="navigation">
-    <a href="#" class="toggleNav" v-on:click="isActive = !isActive" v-bind:class="{ active : isActive }">
-      <svg width="30" height="30" id="hamburger-icon">
-          <path d="M0,5 30,5" stroke-width="5"/>
-          <path d="M0,14 30,14" stroke-width="5"/>
-          <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
-      </svg>
-    </a>
     <div class="sideNavigation" v-bind:class="{ sideNavOpen : isActive }" ref="sideNavigation">
       <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/about">About</router-link></li>
+        <li><router-link to="/">Etusivu</router-link></li>
         <li><router-link to="/testi">Testi</router-link></li>
       </ul>
+      <a href="#" class="toggleNav" v-on:click="isActive = !isActive" v-bind:class="{ active : isActive }">
+        <svg class="svg-icon" viewBox="0 0 20 20">
+          <path d="M12.522,10.4l-3.559,3.562c-0.172,0.173-0.451,0.176-0.625,0c-0.173-0.173-0.173-0.451,0-0.624l3.248-3.25L8.161,6.662c-0.173-0.173-0.173-0.452,0-0.624c0.172-0.175,0.451-0.175,0.624,0l3.738,3.736C12.695,9.947,12.695,10.228,12.522,10.4 M18.406,10c0,4.644-3.764,8.406-8.406,8.406c-4.644,0-8.406-3.763-8.406-8.406S5.356,1.594,10,1.594C14.643,1.594,18.406,5.356,18.406,10M17.521,10c0-4.148-3.374-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.147,17.521,10"></path>
+        </svg>
+      </a>
     </div>
   </nav>
 </template>
@@ -25,12 +22,12 @@ export default {
       isActive: false
     }
   },
-  methods:{
+  methods: {
       documentClick(e){
         let el = this.$refs.sideNavigation
         let target = e.target
         if (!this.$el.contains(event.target)) {
-          this.isActive=false
+          this.isActive = false
         }
       }
     },

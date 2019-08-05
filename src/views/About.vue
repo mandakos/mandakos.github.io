@@ -1,5 +1,44 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about content">
+    <h1>
+      {{ $prismic.richTextAsPlain(fields.title) }}
+    </h1>
+    <p>
+      {{ $prismic.richTextAsPlain(fields.text) }}
+    </p>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'about',
+  data () {
+    return {
+      fields: {
+        title: null,
+        text: null
+      }
+    }
+  },
+  methods: {
+    getContent () {
+      this.$prismic.client.getSingle('about')
+        .then((document) => {
+          if (document) {
+            if(document.data.title) this.fields.title = document.data.title
+            if(document.data.text) this.fields.text = document.data.text
+          } else {
+            this.$router.push({ name: 'not-found' })
+          }
+        })
+    }
+  },
+  created () {
+    this.getContent()
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.getContent()
+    next()
+  }
+}
+</script>

@@ -18,18 +18,21 @@
   --gutter-xl: 20rem;
 
   /* Typography */
-  --font-family: 'Blinker', sans-serif;
-  --font-family-heading: 'Blinker', sans-serif;
+  --font-family: 'Lato', sans-serif;
+  --font-family-heading: 'Raleway', sans-serif;
   --h1-size: 2.5rem;
-  --h2-size: 1.5rem;
+  --h2-size: 1.3rem;
   --h3-size: 1.8rem;
   --h4-size: 1.5rem;
   --h5-size: 1.5rem;
   --font-size: 0.9rem;
+  --font-weight: 400;
+  --font-weight-bold: 600;
   --font-weight-black: 800;
   --line-height: 2;
-  --letter-spacing-medium: 0.2rem;
-  --letter-spacing-large: 0.4rem;
+  --line-height-sm: 1.5;
+  --letter-spacing-medium: 0.1rem;
+  --letter-spacing-large: 0.2rem;
 }
 
 body {
@@ -88,6 +91,9 @@ h1 {
 h2 {
   font-family: var(--font-family-heading);
   font-size: var(--h2-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-medium);
+  line-height: var(--line-height-sm);
 }
 
 .btn {
@@ -95,12 +101,12 @@ h2 {
 }
 
 ::selection {
+  background-color: var(--dark-color);
   color: var(--accent-color);
-  text-shadow: 0 0.2rem 0.8rem var(--dark-color);
 }
 ::-moz-selection {
+  background-color: var(--dark-color);
   color: var(--accent-color);
-  text-shadow: 0 0.2rem 0.8rem var(--dark-color);
 }
 
 /* Side navigation */

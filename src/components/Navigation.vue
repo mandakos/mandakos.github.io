@@ -2,8 +2,8 @@
   <nav class="navigation">
     <div class="sideNavigation" v-bind:class="{ sideNavOpen : isActive }" ref="sideNavigation">
       <ul>
-        <li><router-link to="/">Etusivu</router-link></li>
-        <li><router-link to="/testi">Testi</router-link></li>
+        <li v-on:click="isActive = !isActive"><router-link to="/">Etusivu</router-link></li>
+        <li v-on:click="isActive = !isActive"><router-link to="/about">Info</router-link></li>
       </ul>
       <Author />
       <a href="#" class="toggleNav" v-on:click="isActive = !isActive" v-bind:class="{ active : isActive }">

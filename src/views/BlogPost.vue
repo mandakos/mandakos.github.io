@@ -2,7 +2,20 @@
   <div class="post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.image.url + ')' }]">
     <div class="post-color-fade">
       <div class="post-toolbar">
-        <div class="button-previous">Edellinen</div>
+        <div class="v-loop-wrapper button-previous">
+          <div v-for="(item, index) in posts" :key="index">
+            <template v-if="item.id == documentId">
+              <template v-if="posts[index-1]">
+                <router-link :to="linkResolver(posts[index-1])" class="previous-link">
+                  Edellinen
+                </router-link>
+              </template>
+              <template v-else>
+                <div class="button-previous-disabled">Edellinen</div>
+              </template>
+            </template>
+          </div>
+        </div>
         <div class="button-close">
           <router-link to="/">
             <svg class="svg-icon" viewBox="0 0 20 20">
@@ -10,7 +23,20 @@
             </svg>
           </router-link>
         </div>
-        <div class="button-next">Seuraava</div>
+        <div class="v-loop-wrapper button-next">
+          <div v-for="(item, index) in posts" :key="index">
+            <template v-if="item.id == documentId">
+              <template v-if="posts[index+1]">
+                <router-link :to="linkResolver(posts[index+1])" class="next-link">
+                  Seuraava
+                </router-link>
+              </template>
+              <template v-else>
+                <div class="button-next-disabled">Seuraava</div>
+              </template>
+            </template>
+          </div>
+        </div>
       </div>
       <div class="post-date">
         {{ fields.date_formatted }}
@@ -25,9 +51,22 @@
         <div class="post-gallery">
           <figure v-for="(item, index) in fields.gallery" :key="'photo-item-' + index">
             <prismic-image :field="item.gallery_image.small" class="post-gallery-image"/>
+            <div class="open-lightbox" v-on:click="showLightbox = !showLightbox, itemToShow = index">
+              <svg class="svg-icon" viewBox="0 0 20 20">
+                <path d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"></path>
+              </svg>
+            </div>
             <figcaption class="post-gallery-caption">
               {{ item.gallery_caption }}
             </figcaption>
+            <div class="lightbox" v-bind:class="{ lightboxOpen : showLightbox }">
+              <div class="close-lightbox" v-on:click="showLightbox = !showLightbox">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path d="M10.185,1.417c-4.741,0-8.583,3.842-8.583,8.583c0,4.74,3.842,8.582,8.583,8.582S18.768,14.74,18.768,10C18.768,5.259,14.926,1.417,10.185,1.417 M10.185,17.68c-4.235,0-7.679-3.445-7.679-7.68c0-4.235,3.444-7.679,7.679-7.679S17.864,5.765,17.864,10C17.864,14.234,14.42,17.68,10.185,17.68 M10.824,10l2.842-2.844c0.178-0.176,0.178-0.46,0-0.637c-0.177-0.178-0.461-0.178-0.637,0l-2.844,2.841L7.341,6.52c-0.176-0.178-0.46-0.178-0.637,0c-0.178,0.176-0.178,0.461,0,0.637L9.546,10l-2.841,2.844c-0.178,0.176-0.178,0.461,0,0.637c0.178,0.178,0.459,0.178,0.637,0l2.844-2.841l2.844,2.841c0.178,0.178,0.459,0.178,0.637,0c0.178-0.176,0.178-0.461,0-0.637L10.824,10z"></path>
+                </svg>
+              </div>
+              <prismic-image :field="fields.gallery[itemToShow].gallery_image" class="lightbox-image" ref="lightboxImage"/>
+            </div>
           </figure>
         </div>
       </div>
@@ -40,6 +79,9 @@ export default {
   name: 'BlogPost',
   data () {
     return {
+      posts: [],
+      showLightbox: false,
+      itemToShow: 0,
       documentId: '',
       fields: {
         title: null,
@@ -48,10 +90,20 @@ export default {
         gallery: [],
         date: null,
         date_formatted: null,
-      }
+      },
+      linkResolver: this.$prismic.linkResolver
     }
   },
   methods: {
+    getPosts () {
+      //Query to get blog posts
+      this.$prismic.client.query(
+        this.$prismic.Predicates.at('document.type', 'blog_post'),
+        { orderings : '[my.blog_post.date desc]'}
+      ).then((response) => {
+        this.posts = response.results
+      })
+    },
     getContent (uid) {
       this.$prismic.client.getByUID('blog_post', uid)
         .then((document) => {
@@ -72,13 +124,22 @@ export default {
             this.$router.push({ name: 'not-found' })
           }
         })
-    }
+    },
+    documentClick(e){
+        let el = this.$refs.lightboxImage
+        let target = e.target
+        if (!this.$el.contains(event.target)) {
+          this.showLightbox = false
+        }
+      }
   },
   created () {
     this.getContent(this.$route.params.uid)
+    this.getPosts()
   },
   beforeRouteUpdate (to, from, next) {
     this.getContent(to.params.uid)
+    this.getPosts()
     next()
   }
 }

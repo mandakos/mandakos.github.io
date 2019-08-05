@@ -5,7 +5,9 @@
         <div class="blog-list-item" v-bind:style="[{'background-color': post.data.bg_color},{'background-image': 'url(' + post.data.image.url + ')' }]">
           <p class="blog-list-date">{{ post.data.date }}</p>
           <div class="text-overlay">
-            <h2 class="blog-list-title">{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
+            <router-link :to="linkResolver(post)" class="title-link">
+              <h2 class="blog-list-title">{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
+            </router-link>
             <router-link :to="linkResolver(post)" class="read-more-btn-link">
               <div class="btn read-more-btn">Avaa</div>
             </router-link>

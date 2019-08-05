@@ -1,5 +1,5 @@
 <template>
-  <div class="post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.image.url + ')' }]">
+  <div class="post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.imageUrl + ')' }]">
     <div class="post-color-fade">
       <div class="post-toolbar">
         <div class="v-loop-wrapper button-previous">
@@ -68,10 +68,10 @@
               <prismic-image :field="fields.gallery[itemToShow].gallery_image" class="lightbox-image" ref="lightboxImage"/>
             </div>
           </figure>
+          <div class="disqus-comments">
+            <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="https://mandakos.netlify.com/#/"></vue-disqus>
+          </div>
         </div>
-      </div>
-      <div class="comments">
-        <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="documentUrl"></vue-disqus>
       </div>
     </div>
   </div>
@@ -86,11 +86,11 @@ export default {
       showLightbox: false,
       itemToShow: 0,
       documentId: '',
-      documentUrl: '',
+      documentUid: '',
       fields: {
         title: null,
         story: null,
-        image: null,
+        imageUrl: null,
         gallery: [],
         date: null,
         date_formatted: null,
@@ -113,10 +113,10 @@ export default {
         .then((document) => {
           if (document) {
             this.documentId = document.id
-            this.documentUrl = document.href
+            this.documentUid = document.uid
             if (document.data.title) this.fields.title = document.data.title
             if (document.data.story) this.fields.story = document.data.story
-            if (document.data.image) this.fields.image = document.data.image
+            if (document.data.image.url) this.fields.imageUrl = document.data.image.url
             if (document.data.gallery) this.fields.gallery = document.data.gallery
             if (document.data.date) this.fields.date = document.data.date
             if (this.fields.date) {

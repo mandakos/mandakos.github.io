@@ -143,7 +143,6 @@ h2 {
   background: radial-gradient(circle, var(--white), var(--light-color));
   box-shadow: 0 0 0.1rem rgba(25, 25, 25, 0.55);
   opacity: 0.8;
-  padding: var(--gutter-xs);
   transition: all 0.7s ease-out 0s;
 }
 
@@ -155,12 +154,15 @@ h2 {
   margin-bottom: var(--gutter-sm);
 }
 
-.sideNavigation a {
+.sideNavigation>ul>li a {
   color: var(--dark-color);
+  display: block;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-medium);
+  padding: var(--gutter-xs);
   transition: all 0.2s ease-out 0s;
   text-transform: uppercase;
+  width: 100%;
 }
 
 .sideNavigation a:hover,
@@ -580,4 +582,10 @@ h2 {
 .about p {
   color: var(--light-color);
   margin: var(--gutter-sm);
+}
+
+/* Disqus */
+.disqus-comments {
+  margin-top: var(--gutter-md);
+  padding: var(--gutter-sm);
 }

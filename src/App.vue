@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-bind:style="{'background-image': 'url(' + fields.header_image.url + ')' }">
+  <div id="app" v-bind:style="{'background-image': 'url(' + fields.headerImageUrl + ')' }">
     <div class="app-top">
       <Navigation />
       <transition name="fade" mode="out-in">
@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       fields: {
-        header_image: null
+        headerImageUrl: null
       }
     }
   },
@@ -29,9 +29,9 @@ export default {
       this.$prismic.client.getSingle('frontpage')
         .then((document) => {
           if (document) {
-            this.fields.header_image = document.data.header_image
+            if (document.data.header_image.url) this.fields.headerImageUrl = document.data.header_image.url
           } else {
-            this.fields.header_image = ''
+            this.fields.headerImageUrl = ''
           }
         })
     }

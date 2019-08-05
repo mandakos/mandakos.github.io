@@ -1,6 +1,6 @@
 <template>
   <div class="author">
-    <div class="author-image" v-bind:style="{'background-image': 'url(' + fields.image.url + ')' }"></div>
+    <div class="author-image" v-bind:style="{'background-image': 'url(' + fields.image + ')' }"></div>
     <p class="author-name">
       {{ $prismic.richTextAsPlain(fields.name) }}
     </p>
@@ -36,7 +36,7 @@ export default {
         .then((document) => {
           if (document) {
             if(document.data.name) this.fields.name = document.data.name
-            if(document.data.photo) this.fields.image = document.data.photo
+            if(document.data.photo.url) this.fields.image = document.data.photo.url
             if(document.data.text) this.fields.text = document.data.text
             if(document.data.some_links) this.fields.some = document.data.some_links
           } else {

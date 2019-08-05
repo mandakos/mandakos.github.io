@@ -4,6 +4,9 @@
       <h1>
         {{ $prismic.richTextAsPlain(fields.title) }}
       </h1>
+      <p>
+        {{ $prismic.richTextAsPlain(fields.description) }}
+      </p>
     </div>
     <BlogList />
   </div>
@@ -22,15 +25,17 @@ export default {
     return {
       fields: {
         title: null,
+        description: null
       }
     }
   },
   methods: {
-    getContent (uid) {
+    getContent () {
       this.$prismic.client.getSingle('frontpage')
         .then((document) => {
           if (document) {
-            this.fields.title = document.data.title
+            if(document.data.title) this.fields.title = document.data.title
+            if(document.data.description) this.fields.description = document.data.description
           } else {
             this.$router.push({ name: 'not-found' })
           }
@@ -38,23 +43,11 @@ export default {
     }
   },
   created () {
-    this.getContent(this.$route.params.uid)
+    this.getContent()
   },
   beforeRouteUpdate (to, from, next) {
-    this.getContent(to.params.uid)
+    this.getContent()
     next()
   }
 }
 </script>
-
-<style scoped>
-.frontpage {
-  background-size: cover;
-  background-position: bottom;
-  text-align: center;
-}
-h1 {
-  margin: auto;
-  margin-bottom: 10rem;
-}
-</style>

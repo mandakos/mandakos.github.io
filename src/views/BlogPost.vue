@@ -70,6 +70,9 @@
           </figure>
         </div>
       </div>
+      <div class="comments">
+        <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="documentUrl"></vue-disqus>
+      </div>
     </div>
   </div>
 </template>
@@ -83,6 +86,7 @@ export default {
       showLightbox: false,
       itemToShow: 0,
       documentId: '',
+      documentUrl: '',
       fields: {
         title: null,
         story: null,
@@ -109,6 +113,7 @@ export default {
         .then((document) => {
           if (document) {
             this.documentId = document.id
+            this.documentUrl = document.href
             if (document.data.title) this.fields.title = document.data.title
             if (document.data.story) this.fields.story = document.data.story
             if (document.data.image) this.fields.image = document.data.image

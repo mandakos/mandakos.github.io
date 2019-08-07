@@ -7,8 +7,8 @@
   --light-color-transparent: rgba(237, 230, 233, 0.7);
   --dark-color: #191E34;
   --black-transparent: rgba(28, 27, 33, 0.8);
-  --accent-color: #C3848D;
-  --accent-color-2: #514876;
+  --accent-color: #B27B90;
+  --accent-color-2: #94889b;
   --home-bg-color: #191E34;
 
   /* Gutters */
@@ -58,7 +58,6 @@ body {
   min-height: 100vh;
   padding: var(--gutter-md);
   padding-bottom: var(--gutter-lg);
-  text-align: center;
   transition: all 0.4s ease-out 0s;
   width: 100%;
 }
@@ -73,8 +72,16 @@ body {
   display: flex;
 }
 
-a {
+.content a {
+  border-bottom: 0.05rem dotted var(--accent-color);
   color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s ease-out 0s;
+}
+
+.content a:hover {
+  border-bottom: 0.05rem dashed var(--light-color);
+  color: var(--light-color);
   text-decoration: none;
 }
 
@@ -87,14 +94,18 @@ h1 {
   font-size: var(--h1-size);
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-large);
+  margin: var(--gutter-sm) 0;
 }
 
 h2 {
+  color: var(--light-color);
   font-family: var(--font-family-heading);
   font-size: var(--h2-size);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-medium);
   line-height: var(--line-height-sm);
+  margin-bottom: var(--gutter-sm);
+  margin-top: var(--gutter-md);
 }
 
 .btn {
@@ -121,7 +132,7 @@ h2 {
   position: fixed;
   overflow-x: hidden;
   padding-top: var(--gutter-md);
-  transition: all 1s;
+  transition: all 1s ease-in-out 0.3s;
   top: 0;
   width: 0;
   z-index: 5;
@@ -129,7 +140,7 @@ h2 {
 
 @media only screen and (min-width: 770px) {
   .sideNavigation {
-    position: relative;
+    position: fixed;
   }
 }
 
@@ -251,11 +262,14 @@ h2 {
 }
 
 .blog-list-item-wrapper a {
+  border-bottom: 0;
   height: 100%;
   transition: all 0.4s ease-out 0s;
+  text-decoration: none;
 }
 
 .blog-list-item-wrapper a:hover {
+  border-bottom: 0;
   text-decoration: none;
 }
 
@@ -270,6 +284,7 @@ h2 {
   overflow: hidden;
   position: absolute;
   right: 0;
+  text-align: center;
   top: 0;
   transition: all 0.5s ease-in-out 0s;
 }
@@ -386,15 +401,15 @@ h2 {
 }
 
 .post-content a {
-  border-bottom: 0.1rem dotted var(--accent-color-2);
-  color: var(--accent-color-2);
-  font-weight: var(--font-weight-bold);
-  transition: all 0.2s ease-in-out 0s;
+  border-bottom: 0.05rem dotted var(--accent-color);
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s ease-out 0s;
 }
 
 .post-content a:hover {
-  background-color: var(--accent-color-2);
-  color: var(--white);
+  border-bottom: 0.05rem dashed var(--light-color);
+  color: var(--light-color);
   text-decoration: none;
 }
 
@@ -577,9 +592,18 @@ h2 {
 
 /* Author */
 .author {
+  bottom: 0;
   background-color: var(--white);
+  opacity: 0;
   padding: var(--gutter-sm);
+  position: absolute;
   text-align: center;
+  transition: all 0.5s ease-in 1s;
+  width: 100%;
+}
+
+.sideNavOpen .author {
+  opacity: 1;
 }
 
 .author-image {
@@ -593,17 +617,25 @@ h2 {
 
 .author-name {
   font-weight: var(--font-weight-black);
+  margin-top: 1rem;
 }
 
 .author-some-links {
   display: flex;
+  flex-flow: wrap;
   justify-content: center;
 }
 
 .author-some-links li {
-  height: 2rem;
+  height: 1.8rem;
   list-style: none;
-  width: 2rem;
+  margin: 0.3rem;;
+  width: 1.8rem;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.author-some-links li:hover {
+  transform: scale(1.09);
 }
 
 /* Single pages */
@@ -614,16 +646,34 @@ h2 {
   text-align: center;
 }
 .frontpage h1,
-.about h1 {
+.about h1,
+.not-found h1 {
   color: var(--light-color);
   margin: auto;
   text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.35);
 }
 
 .frontpage p,
-.about p {
-  color: var(--light-color);
-  margin: var(--gutter-sm);
+.about p,
+.not-found p {
+  color: var(--accent-color-2);
+  margin: var(--gutter-xs) 0;
+}
+
+.not-found {
+  text-align: center;
+}
+
+@media only screen and (min-width: 990px) {
+  .about,
+  .not-found {
+    max-width: 50%;
+    margin: auto;
+  }
+}
+
+.not-found h1 {
+  font-size: 8rem;
 }
 
 /* Disqus */

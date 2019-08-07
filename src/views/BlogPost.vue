@@ -46,7 +46,7 @@
           {{ $prismic.richTextAsPlain(fields.title) }}
         </h1>
         <p class="post-story" v-bind:style="{ color: fields.text_color }">
-          {{ $prismic.richTextAsPlain(fields.story) }}
+          <prismic-rich-text :field="fields.story"/>
         </p>
         <div class="post-gallery">
           <figure v-for="(item, index) in fields.gallery" :key="'photo-item-' + index">

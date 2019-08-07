@@ -8,6 +8,7 @@
   --dark-color: #191E34;
   --black-transparent: rgba(28, 27, 33, 0.8);
   --accent-color: #C3848D;
+  --accent-color-2: #514876;
   --home-bg-color: #191E34;
 
   /* Gutters */
@@ -303,6 +304,34 @@ h2 {
   opacity: 1;
 }
 
+.blog-list .load-more {
+  cursor: pointer;
+  margin: var(--gutter-sm) auto;
+  transition: all 0.2s ease-in-out 0s;
+  width: 5rem;
+}
+
+.blog-list .load-more-text {
+  color: var(--accent-color-2);
+  visibility: hidden;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+
+.blog-list .load-more svg {
+  stroke: var(--light-color);
+  transition: all 0.2s ease-in-out 0s;
+  width: 3rem;
+}
+
+.blog-list .load-more:hover .load-more-text {
+  visibility: visible;
+}
+
+.blog-list .load-more:hover svg {
+  stroke: var(--accent-color-2);
+}
+
 .read-more-btn-link {
   text-align: center;
 }
@@ -356,9 +385,22 @@ h2 {
   padding: var(--gutter-md) 10%;
 }
 
+.post-content a {
+  border-bottom: 0.1rem dotted var(--accent-color-2);
+  color: var(--accent-color-2);
+  font-weight: var(--font-weight-bold);
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.post-content a:hover {
+  background-color: var(--accent-color-2);
+  color: var(--white);
+  text-decoration: none;
+}
+
 .post-color-fade {
   box-shadow: 0 0 10rem rgba(25, 25, 25, 0.4);
-  background: linear-gradient(to top, var(--light-color), var(--light-color-transparent) 60%, transparent);
+  background: linear-gradient(to top, var(--light-color), var(--light-color-transparent) 80%, transparent);
   min-height: 100vh;
   margin-left: auto;
   margin-right: 0;

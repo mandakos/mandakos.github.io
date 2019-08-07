@@ -108,6 +108,11 @@ h2 {
   margin-top: var(--gutter-md);
 }
 
+h3 {
+  color: var(--light-color);
+  margin: var(--gutter-sm) 0;
+}
+
 .btn {
   font-family: var(--font-family-heading);
 }
@@ -647,7 +652,8 @@ h2 {
 }
 .frontpage h1,
 .about h1,
-.not-found h1 {
+.not-found h1,
+.bird-names h1 {
   color: var(--light-color);
   margin: auto;
   text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.35);
@@ -655,7 +661,8 @@ h2 {
 
 .frontpage p,
 .about p,
-.not-found p {
+.not-found p,
+.bird-names p {
   color: var(--accent-color-2);
   margin: var(--gutter-xs) 0;
 }
@@ -680,4 +687,23 @@ h2 {
 .disqus-comments {
   margin-top: var(--gutter-md);
   padding: var(--gutter-sm);
+}
+
+/* Forms */
+select, option {
+  color: var(--dark-color);
+}
+
+.bird-names input {
+  min-width: 20rem;
+  padding: var(--gutter-xs);
+}
+
+.bird-names-query {
+  margin-bottom: var(--gutter-md);
+}
+
+.bird-names-license {
+  font-size: 0.7rem;
+  margin-top: var(--gutter-md);
 }

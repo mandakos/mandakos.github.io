@@ -4,6 +4,7 @@
       <ul>
         <li v-on:click="isActive = !isActive"><router-link to="/">Etusivu</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/about">Tietoa</router-link></li>
+        <li v-on:click="isActive = !isActive"><router-link to="/birdnames">Lajinimien kääntäjä</router-link></li>
       </ul>
       <Author />
       <a href="#" class="toggleNav" v-on:click="isActive = !isActive" v-bind:class="{ active : isActive }">

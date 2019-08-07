@@ -22,8 +22,9 @@
   --font-family: 'Lato', sans-serif;
   --font-family-heading: 'Raleway', sans-serif;
   --h1-size: 2.5rem;
+  --h1-size-mobile: 1.9rem;
   --h2-size: 1.3rem;
-  --h3-size: 1.8rem;
+  --h3-size: 1.3rem;
   --h4-size: 1.5rem;
   --h5-size: 1.5rem;
   --font-size: 0.9rem;
@@ -51,13 +52,14 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
+  padding-left: var(--gutter-sm);
 }
 
 .content {
-  margin-left: var(--gutter-sm);
   min-height: 100vh;
-  padding: var(--gutter-md);
+  padding: var(--gutter-sm);
   padding-bottom: var(--gutter-lg);
+  padding-top: var(--gutter-md);
   transition: all 0.4s ease-out 0s;
   width: 100%;
 }
@@ -91,10 +93,18 @@ img {
 
 h1 {
   font-family: var(--font-family-heading);
-  font-size: var(--h1-size);
+  font-size: var(--h1-size-mobile);
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-large);
-  margin: var(--gutter-sm) 0;
+  margin: var(--gutter-xs) 0;
+  word-break: break-all;
+}
+
+@media only screen and (min-width: 770px) {
+  h1 {
+    font-size: var(--h1-size);
+    margin: var(--gutter-sm) 0;
+  }
 }
 
 h2 {
@@ -110,6 +120,7 @@ h2 {
 
 h3 {
   color: var(--light-color);
+  font-size: var(--h3-size);
   margin: var(--gutter-sm) 0;
 }
 
@@ -246,7 +257,7 @@ h3 {
 .blog-list-item-wrapper {
   flex: 1;
   margin: 0.2rem;
-  padding-bottom: 70%;
+  padding-bottom: 120%;
   position: relative;
   transition: all 0.4s ease-out 0s;
   min-width: 100%;
@@ -396,13 +407,18 @@ h3 {
   background-size: cover;
   background-position: left;
   background-attachment: fixed;
+  left: 0;
+  height: auto;
   min-height: 100vh;
   margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 100%;
 }
 
 .post-content {
-  padding: var(--gutter-md) 10%;
+  padding: var(--gutter-sm) 10%;
 }
 
 .post-content a {
@@ -691,11 +707,14 @@ h3 {
 
 /* Forms */
 select, option {
+  background-color: var(--light-color);
   color: var(--dark-color);
 }
 
 .bird-names input {
-  min-width: 20rem;
+  background-color: var(--light-color);
+  max-width: 100%;
+  width: 20rem;
   padding: var(--gutter-xs);
 }
 
@@ -706,4 +725,30 @@ select, option {
 .bird-names-license {
   font-size: 0.7rem;
   margin-top: var(--gutter-md);
+}
+
+/* Go to top button */
+.goToTop {
+  background: none;
+  bottom: 15px;
+  cursor: pointer;
+  height: 2.5rem;
+  opacity: 0;
+  position: fixed;
+  right: 15px;
+  transition: all 0.5s ease-in-out 0s;
+  width: 2.5rem;
+  z-index: 6;
+}
+
+.goToTop>svg>path {
+  stroke: var(--light-color);
+}
+
+.goToTop.isVisible {
+  opacity: 0.7;
+}
+
+.goToTop.isVisible:hover {
+  opacity: 1;
 }

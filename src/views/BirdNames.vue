@@ -21,9 +21,9 @@
       <p>Kirjoita alle lajin nimi jonka haluat kääntää:</p>
       <input v-model="setName" @input="inputOnChange" placeholder="Kirjoita käännettävä nimi tähän">
       <div v-for="(value, index) in jsonData" v-bind:key="index">
-        <div v-if="value[selectedFrom].toLowerCase() == setName.toLowerCase()">
+        <template v-if="value[selectedFrom].toLowerCase() == setName.toLowerCase()">
           <h3>{{ value[selectedFrom] }} = {{ value[selectedTo] }}</h3>
-        </div>
+        </template>
       </div>
     </div>
     <hr>

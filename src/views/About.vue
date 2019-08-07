@@ -3,9 +3,7 @@
     <h1>
       {{ $prismic.richTextAsPlain(fields.title) }}
     </h1>
-    <p>
-      {{ $prismic.richTextAsPlain(fields.text) }}
-    </p>
+    <prismic-rich-text :field="fields.text"/>
   </div>
 </template>
 

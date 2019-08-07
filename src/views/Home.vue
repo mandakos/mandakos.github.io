@@ -4,9 +4,7 @@
       <h1>
         {{ $prismic.richTextAsPlain(fields.title) }}
       </h1>
-      <p>
-        {{ $prismic.richTextAsPlain(fields.description) }}
-      </p>
+      <prismic-rich-text :field="fields.description"/>
     </div>
     <BlogList />
   </div>

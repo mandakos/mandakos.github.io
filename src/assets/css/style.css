@@ -97,7 +97,8 @@ h1 {
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-large);
   margin: var(--gutter-xs) 0;
-  word-break: break-all;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 770px) {
@@ -418,7 +419,11 @@ h3 {
 }
 
 .post-content {
-  padding: var(--gutter-sm) 10%;
+  padding: var(--gutter-xs) 10%;
+}
+
+.post-content h1 {
+  letter-spacing: unset;
 }
 
 .post-content a {
@@ -450,7 +455,7 @@ h3 {
 .post-color-fade .post-story {
   color: var(--dark-color);
   overflow: hidden;
-  margin-top: var(--gutter-md);
+  margin-top: var(--gutter-sm);
 }
 
 @media only screen and (min-width: 990px) {
@@ -709,6 +714,13 @@ h3 {
 select, option {
   background-color: var(--light-color);
   color: var(--dark-color);
+  margin-right: 1rem;
+  width: 10rem;
+  max-width: 100%;
+}
+
+select {
+  height: 2rem;
 }
 
 .bird-names input {
@@ -725,6 +737,10 @@ select, option {
 .bird-names-license {
   font-size: 0.7rem;
   margin-top: var(--gutter-md);
+}
+
+.bird-names-license p {
+  line-height: 1;
 }
 
 /* Go to top button */

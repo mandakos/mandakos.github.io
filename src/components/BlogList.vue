@@ -4,7 +4,7 @@
       <!-- Template for blog posts -->
       <div v-for="post in posts" :key="post.id" class="blog-list-item-wrapper" v-bind:post="post">
         <div class="blog-list-item" v-bind:style="[{'background-color': post.data.bg_color},{'background-image': 'url(' + post.data.image.url + ')' }]">
-          <p class="blog-list-date">{{ post.data.date }}</p>
+          <p class="blog-list-date">{{ formatDate(post.data.date) }}</p>
           <div class="text-overlay">
             <router-link :to="linkResolver(post)" class="title-link">
               <h2 class="blog-list-title">{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-else class="blog-list">
-      Pahoittelut! Jotain meni pieleen, blogilistaa ei voida näyttää.
+      Pahoittelut! Jotain meni pieleen, blogilistaa ei voida juuri nyt näyttää.
     </div>
     <div v-if="pagesLeft() && moreThanPagination()" class="load-more" @click="loadMore()">
       <svg class="svg-icon" viewBox="0 0 20 20">
@@ -60,6 +60,13 @@ export default {
         this.pages = response.results_per_page;
         this.totalSize = response.total_results_size;
       })
+    },
+    formatDate (value) {
+      if (value)
+        return Intl.DateTimeFormat('fi-FI',{
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'}).format(new Date(value));
     },
     loadMore () {
       this.postsPerPage = this.postsPerPage + 4

@@ -1,6 +1,6 @@
 <template>
   <div class="bird-names content">
-    <h1>Lajinimien kääntäjä</h1>
+    <h1>Lintulajien kääntäjä</h1>
     <hr>
     <p>Valitse ensin minkälaisen käännöksen haluat tehdä:</p>
     <div class="bird-names-query">
@@ -28,8 +28,9 @@
     </div>
     <hr>
     <div class="bird-names-license">
-      <p>Suomen 1., 2. ja 3. lintuatlaksen tulokset. Luonnontieteellinen keskusmuseo Luomus, Helsingin yliopisto. Käyttö Creative Commons Nimeä 4.0 -lisenssillä.</p>
-      <p>Results of the 1st, 2nd and 3rd Finnish bird atlas. Finnish Museum of Natural History, University of Helsinki Luomus. Used with Creative Commons Attribution 4.0 -license.</p>
+      <p>Lintujen nimet <a href="http://atlas3.lintuatlas.fi/taustaa/kaytto">3. Lintuatlaksen aineistosta</a></p>
+      <p>Luonnontieteellinen keskusmuseo Luomus, Helsingin yliopisto. Käyttö Creative Commons Nimeä 4.0 -lisenssillä.</p>
+      <p>Finnish Museum of Natural History, University of Helsinki Luomus. Used with Creative Commons Attribution 4.0 -license.</p>
     </div>
   </div>
 </template>

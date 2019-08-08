@@ -1,6 +1,6 @@
 <template>
-  <div class="post-wrapper" v-bind:style="[{'background-color': fields.bg_color},{'background-image': 'url(' + fields.imageUrl + ')' }]">
-    <div class="post-color-fade">
+  <div class="post-wrapper" v-bind:style="[{'background-color': fields.bgColor},{'background-image': 'url(' + fields.imageUrl + ')' }]">
+    <div class="post-color-fade" v-bind:style="[{'background': 'linear-gradient(to top, ' + fields.bgColor + ' 70%, transparent)'},{'color': fields.textColor }]">
       <div class="post-toolbar">
         <div class="v-loop-wrapper button-previous">
           <div v-for="(item, index) in posts" :key="index">
@@ -42,10 +42,10 @@
         {{ fields.date_formatted }}
       </div>
       <div class="post-content">
-        <h1 class="post-title" v-bind:style="{ color: fields.text_color }">
+        <h1 class="post-title" v-bind:style="{ color: fields.textColor }">
           {{ $prismic.richTextAsPlain(fields.title) }}
         </h1>
-        <p class="post-story" v-bind:style="{ color: fields.text_color }">
+        <p class="post-story" v-bind:style="{ color: fields.textColor }">
           <prismic-rich-text :field="fields.story"/>
         </p>
         <div class="post-gallery">
@@ -92,6 +92,8 @@ export default {
         story: null,
         imageUrl: null,
         gallery: [],
+        textColor: null,
+        bgColor: null,
         date: null,
         date_formatted: null,
       },
@@ -118,6 +120,8 @@ export default {
             if (document.data.story) this.fields.story = document.data.story
             if (document.data.image.url) this.fields.imageUrl = document.data.image.url
             if (document.data.gallery) this.fields.gallery = document.data.gallery
+            if (document.data.text_color) this.fields.textColor = document.data.text_color
+            if (document.data.bg_color) this.fields.bgColor = document.data.bg_color
             if (document.data.date) this.fields.date = document.data.date
             if (this.fields.date) {
               this.fields.date_formatted = Intl.DateTimeFormat('fi-FI',{

@@ -32,7 +32,7 @@
   --font-weight-bold: 600;
   --font-weight-black: 800;
   --line-height: 2;
-  --line-height-sm: 1.5;
+  --line-height-sm: 1.6;
   --letter-spacing-medium: 0.1rem;
   --letter-spacing-large: 0.2rem;
 }
@@ -42,7 +42,7 @@ body {
   color: var(--dark-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
-  line-height: var(--line-height);
+  line-height: var(--line-height-sm);
   margin: 0;
   transition-delay: 0.5s;
 }
@@ -56,6 +56,8 @@ body {
 }
 
 .content {
+  max-width: 1000px;
+  margin: auto;
   min-height: 100vh;
   padding: var(--gutter-sm);
   padding-bottom: var(--gutter-lg);
@@ -66,7 +68,7 @@ body {
 
 @media only screen and (min-width: 770px) {
   .content {
-    padding: var(--gutter-lg);
+    padding-top: 15vw;
   }
 }
 
@@ -668,7 +670,7 @@ h3 {
 .frontpage {
   background-size: cover;
   background-position: bottom;
-  margin-bottom: var(--gutter-sm);
+  margin-bottom: var(--gutter-md);
   text-align: center;
 }
 .frontpage h1,
@@ -676,7 +678,7 @@ h3 {
 .not-found h1,
 .bird-names h1 {
   color: var(--light-color);
-  margin: auto;
+  margin-bottom: var(--gutter-sm);
   text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.35);
 }
 

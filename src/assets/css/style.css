@@ -208,12 +208,12 @@ h3 {
 }
 
 .sideNavOpen {
-  width: 60%;
+  width: 70%;
 }
 
 @media only screen and (min-width: 770px) {
   .sideNavOpen {
-    width: 12rem;
+    width: 14rem;
   }
 }
 
@@ -625,13 +625,14 @@ h3 {
 /* Author */
 .author {
   bottom: 0;
-  background-color: var(--white);
+  background-color: var(--light-color-transparent);
   opacity: 0;
   padding: var(--gutter-sm);
   position: absolute;
   text-align: center;
   transition: all 0.5s ease-in 1s;
   width: 100%;
+  z-index: -1;
 }
 
 .sideNavOpen .author {
@@ -659,10 +660,10 @@ h3 {
 }
 
 .author-some-links li {
-  height: 1.8rem;
+  height: 1.6rem;
   list-style: none;
   margin: 0.3rem;;
-  width: 1.8rem;
+  width: 1.6rem;
   transition: all 0.2s ease-in-out 0s;
 }
 

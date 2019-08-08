@@ -93,6 +93,10 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: var(--accent-color);
+}
+
 h1 {
   font-family: var(--font-family-heading);
   font-size: var(--h1-size-mobile);

@@ -93,6 +93,10 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: var(--accent-color);
+}
+
 h1 {
   font-family: var(--font-family-heading);
   font-size: var(--h1-size-mobile);
@@ -150,7 +154,6 @@ h3 {
   left: 0;
   position: fixed;
   overflow-x: hidden;
-  padding-top: var(--gutter-md);
   transition: all 1s ease-in-out 0.3s;
   top: 0;
   width: 0;
@@ -159,6 +162,7 @@ h3 {
 
 @media only screen and (min-width: 770px) {
   .sideNavigation {
+    padding-top: var(--gutter-md);
     position: fixed;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="post-wrapper" v-bind:style="[{'background-color': fields.bgColor},{'background-image': 'url(' + fields.imageUrl + ')' }]">
-    <div class="post-color-fade" v-bind:style="[{'background': 'linear-gradient(to top, ' + fields.bgColor + ' 70%, transparent)'},{'color': fields.textColor }]">
+    <div class="post-color-fade" v-bind:style="[{'background': 'linear-gradient(to top, ' + fields.bgColor + ' 80%, transparent)'},{'color': fields.textColor }]">
       <div class="post-toolbar">
         <div class="v-loop-wrapper button-previous">
           <div v-for="(item, index) in posts" :key="index">

@@ -52,6 +52,9 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
+}
+
+.app-wrapper {
   padding-left: var(--gutter-sm);
 }
 
@@ -219,11 +222,11 @@ h3 {
 
 .toggleNav {
   bottom: 50%;
-  margin-left: -1.4rem;
+  margin-left: -2.4rem;
   position: fixed;
   transition: all 0.7s ease-out 0s;
   width: 3rem;
-  z-index: 2;
+  z-index: 100;
 }
 
 .toggleNav:hover {
@@ -774,4 +777,40 @@ select {
 
 .goToTop.isVisible:hover {
   opacity: 1;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  max-width: 1000px;
+  padding: var(--gutter-sm);
+  padding-bottom: var(--gutter-md);
+  padding-top: var(--gutter-md);
+}
+
+.footer-wrapper {
+  width: 100%;
+}
+
+.footer-first,
+.footer-second,
+.footer-third {
+  margin-bottom: var(--gutter-sm);
+  padding: var(--gutter-sm);
+  text-align: center;
+  width: 100%;
+}
+
+@media only screen and (min-width: 770px) {
+  .footer-first,
+  .footer-second,
+  .footer-third {
+    margin-bottom: 0;
+    min-width: 33%;
+    text-align: left;
+    width: auto;
+  }
 }

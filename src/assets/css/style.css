@@ -704,8 +704,9 @@ h3 {
 
 @media only screen and (min-width: 990px) {
   .about,
-  .not-found {
-    max-width: 50%;
+  .not-found,
+  .bird-names {
+    max-width: 70%;
     margin: auto;
   }
 }

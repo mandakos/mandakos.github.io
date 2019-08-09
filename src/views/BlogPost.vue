@@ -74,6 +74,7 @@
         </div>
       </div>
     </div>
+    <script v-html="jsonLD" type="application/ld+json"></script>
   </div>
 </template>
 
@@ -89,6 +90,7 @@ export default {
       documentUid: '',
       fields: {
         title: null,
+        description: null,
         story: null,
         imageUrl: null,
         gallery: [],
@@ -97,7 +99,8 @@ export default {
         date: null,
         date_formatted: null,
       },
-      linkResolver: this.$prismic.linkResolver
+      linkResolver: this.$prismic.linkResolver,
+      jsonLD: null
     }
   },
   methods: {
@@ -117,6 +120,7 @@ export default {
             this.documentId = document.id
             this.documentUid = document.uid
             if (document.data.title) this.fields.title = document.data.title
+            if (document.data.short) this.fields.description = document.data.short
             if (document.data.story) this.fields.story = document.data.story
             if (document.data.image.url) this.fields.imageUrl = document.data.image.url
             if (document.data.gallery) this.fields.gallery = document.data.gallery
@@ -140,15 +144,35 @@ export default {
         if (!this.$el.contains(event.target)) {
           this.showLightbox = false
         }
+      },
+    getJsonLD () {
+      this.jsonLD = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": this.fields.title,
+        "description": this.fields.description,
+        "url": "https://mandakos.netlify.com/#/" + this.documentUid,
+        "image" : {
+          "@type": "ImageObject",
+          "url": this.fields.imageUrl,
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Manda K"
+        },
+        "datePublished": this.fields.date
       }
+    },
   },
   created () {
     this.getContent(this.$route.params.uid)
     this.getPosts()
+    this.getJsonLD()
   },
   beforeRouteUpdate (to, from, next) {
     this.getContent(to.params.uid)
     this.getPosts()
+    this.getJsonLD()
     next()
   }
 }

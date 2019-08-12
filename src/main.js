@@ -7,8 +7,10 @@ import router from './router'
 import VueDisqus from 'vue-disqus'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueHead from 'vue-head'
 
 Vue.use(VueAxios, axios)
+Vue.use(VueHead)
 
 Vue.config.productionTip = false
 

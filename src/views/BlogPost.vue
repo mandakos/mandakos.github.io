@@ -69,12 +69,11 @@
             </div>
           </figure>
           <div class="disqus-comments">
-            <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="https://mandakos.netlify.com/#/"></vue-disqus>
+            <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="https://mandakos.netlify.com/"></vue-disqus>
           </div>
         </div>
       </div>
     </div>
-    <script v-html="jsonLD" type="application/ld+json"></script>
   </div>
 </template>
 
@@ -101,6 +100,17 @@ export default {
       },
       linkResolver: this.$prismic.linkResolver,
       jsonLD: null
+    }
+  },
+  head: {
+    title () {
+      return { inner: this.fields.title[0].text }
+    },
+    meta () {
+      return [{ name: 'description', content: this.fields.description, id: 'desc' }]
+    },
+    script () {
+      return [{ t:'application/ld+json', i: JSON.stringify(this.jsonLD) }]
     }
   },
   methods: {
@@ -133,46 +143,55 @@ export default {
                 month: 'long',
                 day: 'numeric'}).format(new Date(this.fields.date));
             }
+            this.jsonLD = this.getJsonLD(document)
           } else {
             this.$router.push({ name: 'not-found' })
           }
         })
     },
-    documentClick(e){
+    documentClick (e){
         let el = this.$refs.lightboxImage
         let target = e.target
         if (!this.$el.contains(event.target)) {
           this.showLightbox = false
         }
       },
-    getJsonLD () {
-      this.jsonLD = {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": this.fields.title,
-        "description": this.fields.description,
-        "url": "https://mandakos.netlify.com/#/" + this.documentUid,
-        "image" : {
-          "@type": "ImageObject",
-          "url": this.fields.imageUrl,
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Manda K"
-        },
-        "datePublished": this.fields.date
-      }
+    getJsonLD (document) {
+      return {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": document.data.title[0].text,
+            "description": document.data.description,
+            "url": "https://mandakos.netlify.com/" + document.uid,
+            "image" : {
+              "@type": "ImageObject",
+              "url": document.data.image.url,
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Manda K"
+            },
+            "datePublished": document.data.date
+          }
     },
+    updateHeadTags() {
+      var self = this;
+      setTimeout(function() {
+        self.$nextTick(function() {
+          self.$emit('updateHead')
+        })
+      }, 2000);
+    }
   },
   created () {
     this.getContent(this.$route.params.uid)
     this.getPosts()
-    this.getJsonLD()
+    this.updateHeadTags()
   },
   beforeRouteUpdate (to, from, next) {
     this.getContent(to.params.uid)
     this.getPosts()
-    this.getJsonLD()
+    this.updateHeadTags()
     next()
   }
 }

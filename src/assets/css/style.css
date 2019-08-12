@@ -792,6 +792,23 @@ footer {
   padding-top: var(--gutter-md);
 }
 
+footer a {
+  border-bottom: 0.05rem dotted var(--accent-color);
+  color: var(--accent-color);
+}
+
+footer a:hover,
+footer a:focus,
+footer a:active {
+  border-bottom: 0.05rem dashed var(--accent-color-2);
+  color: var(--accent-color-2);
+  text-decoration: none;
+}
+
+footer strong {
+  font-size: 1.4rem;
+}
+
 .footer-wrapper {
   width: 100%;
 }
@@ -803,6 +820,10 @@ footer {
   padding: var(--gutter-sm);
   text-align: center;
   width: 100%;
+}
+
+.footer-second a {
+  text-transform: uppercase;
 }
 
 @media only screen and (min-width: 770px) {

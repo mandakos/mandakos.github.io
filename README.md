@@ -1,2 +1,2 @@
-https://mandakos.netlify.com/
+https://varisloki.netlify.com/
 # mandakos.github.io

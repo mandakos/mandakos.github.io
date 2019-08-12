@@ -162,7 +162,7 @@ export default {
             "@type": "BlogPosting",
             "headline": document.data.title[0].text,
             "description": document.data.description,
-            "url": "https://mandakos.netlify.com/" + document.uid,
+            "url": "https://varisloki.netlify.com/#/" + document.uid,
             "image" : {
               "@type": "ImageObject",
               "url": document.data.image.url,

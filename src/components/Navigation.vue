@@ -2,7 +2,7 @@
   <nav class="navigation">
     <div class="sideNavigation" v-bind:class="{ sideNavOpen : isActive }" ref="sideNavigation">
       <ul>
-        <li v-on:click="isActive = !isActive"><router-link to="/">Etusivu</router-link></li>
+        <li v-on:click="isActive = !isActive"><router-link to="/">Blogi</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/about">Tietoa</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/birdnames">Lintulajien kääntäjä</router-link></li>
       </ul>

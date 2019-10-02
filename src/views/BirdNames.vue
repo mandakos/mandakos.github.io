@@ -1,6 +1,8 @@
 <template>
   <div class="bird-names content">
-    <h1>Lintulajien kääntäjä</h1>
+    <div class="bird-names-header">
+      <h1>Lintulajien kääntäjä</h1>
+    </div>
     <hr>
     <p>Valitse ensin minkälaisen käännöksen haluat tehdä:</p>
     <div class="bird-names-query">
@@ -19,12 +21,14 @@
         <option value="speciesSCI">tieteelliseksi nimeksi</option>
       </select>
       <p>Kirjoita alle lajin nimi jonka haluat kääntää:</p>
-      <input v-model="setName" @input="inputOnChange" placeholder="Kirjoita käännettävä nimi tähän">
-      <div v-for="(value, index) in jsonData" v-bind:key="index">
-        <template v-if="value[selectedFrom].toLowerCase() == setName.toLowerCase()">
-          <h3>{{ value[selectedFrom] }} = {{ value[selectedTo] }}</h3>
-        </template>
-      </div>
+      <input v-model="setName" placeholder="Kirjoita käännettävä nimi tähän">
+      <template v-if="setName.length > 1 && selectedTo && selectedFrom">
+        <div v-for="(value, index) in jsonData" v-bind:key="index">
+          <template v-if="value[selectedFrom].toLowerCase() == setName.toLowerCase()">
+            <h3>{{ value[selectedFrom] }} = {{ value[selectedTo] }}</h3>
+          </template>
+        </div>
+      </template>
     </div>
     <hr>
     <div class="bird-names-license">
@@ -46,7 +50,8 @@ export default {
       result: '',
       translatedName: '',
       resultShow: false,
-      jsonData: {}
+      jsonData: {},
+      infoVisible: false
     }
   },
   methods: {

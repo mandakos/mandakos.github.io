@@ -54,23 +54,20 @@ body {
   background-position: top;
 }
 
-.app-wrapper {
-  padding-left: var(--gutter-sm);
-}
-
 .content {
   max-width: 1000px;
-  margin: auto;
   min-height: 100vh;
-  padding: var(--gutter-sm);
+  padding: 2.5rem;
   padding-bottom: var(--gutter-lg);
   padding-top: var(--gutter-md);
+  margin: auto;
   transition: all 0.4s ease-out 0s;
   width: 100%;
 }
 
 @media only screen and (min-width: 770px) {
   .content {
+    padding: var(--gutter-md);
     padding-top: 15vw;
   }
 }
@@ -92,12 +89,22 @@ body {
   text-decoration: none;
 }
 
+div {
+  box-sizing: border-box;
+}
+
+hr {
+  border: 0.5px solid #212548;
+  margin-bottom: var(--gutter-sm);
+}
+
 img {
   max-width: 100%;
 }
 
 a {
   color: var(--accent-color);
+  text-decoration: none;
 }
 
 h1 {
@@ -165,7 +172,6 @@ h3 {
 
 @media only screen and (min-width: 770px) {
   .sideNavigation {
-    padding-top: var(--gutter-md);
     position: fixed;
   }
 }
@@ -200,7 +206,6 @@ h3 {
   padding: var(--gutter-xs);
   transition: all 0.2s ease-out 0s;
   text-transform: uppercase;
-  width: 100%;
 }
 
 .sideNavigation a:hover,
@@ -222,7 +227,8 @@ h3 {
 
 .toggleNav {
   bottom: 50%;
-  margin-left: -2.4rem;
+  margin-left: -1.4rem;
+  opacity: 0.5;
   position: fixed;
   transition: all 0.7s ease-out 0s;
   width: 3rem;
@@ -266,11 +272,19 @@ h3 {
 
 .blog-list-item-wrapper {
   flex: 1;
-  margin: 0.2rem;
+  margin: 0.4rem;
+  margin-bottom: 1rem;
   padding-bottom: 120%;
   position: relative;
   transition: all 0.4s ease-out 0s;
   min-width: 100%;
+}
+
+@media only screen and (min-width: 480px) {
+  .blog-list-item-wrapper {
+    padding-bottom: 60%;
+    min-width: 100%;
+  }
 }
 
 @media only screen and (min-width: 770px) {
@@ -304,6 +318,7 @@ h3 {
   color: var(--light-color);
   background-size: cover;
   background-position: center;
+  border-radius: 0.8rem;
   bottom: 0;
   height: 100%;
   left: 0;
@@ -316,7 +331,7 @@ h3 {
 }
 
 .blog-list-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   z-index: 2;
 }
 
@@ -373,16 +388,14 @@ h3 {
   stroke: var(--accent-color-2);
 }
 
-.read-more-btn-link {
-  text-align: center;
-}
-
 .read-more-btn {
+  background-color: var(--black-transparent);
   border: 0.1rem solid var(--light-color-transparent);
   color: var(--light-color);
-  font-size: 70%;
   letter-spacing: var(--letter-spacing-medium);
+  margin: auto;
   text-transform: uppercase;
+  width: 4rem;
 }
 
 .read-more-btn:hover {
@@ -579,19 +592,21 @@ h3 {
   display: flex;
   justify-content: space-between;
   padding: var(--gutter-xs) var(--gutter-sm);
-  width: 100%;
 }
 
 .post-toolbar .next-link,
 .post-toolbar .previous-link {
-  border: 0.02rem solid var(--accent-color);
+  border: 0.02rem solid var(--light-color);
+  color: var(--light-color);
   display: block;
   padding: 0 var(--gutter-xs);
+  text-decoration: none;
 }
 
 .post-toolbar .next-link:hover,
 .post-toolbar .previous-link:hover {
-  border: 0.02rem solid var(--light-color);
+  border: 0.02rem solid var(--accent-color);
+  color: var(--accent-color);
 }
 
 .post-toolbar .button-previous a:hover,
@@ -733,10 +748,15 @@ select {
   height: 2rem;
 }
 
+.bird-names-header {
+  display: flex;
+}
+
 .bird-names input {
   background-color: var(--light-color);
   max-width: 100%;
-  width: 20rem;
+  max-width: 20rem;
+  min-width: 10rem;
   padding: var(--gutter-xs);
 }
 
@@ -830,7 +850,7 @@ footer strong {
   .footer-second,
   .footer-third {
     margin-bottom: 0;
-    min-width: 33%;
+    min-width: 25%;
     text-align: left;
     width: auto;
   }

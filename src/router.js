@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -14,6 +15,10 @@ export default new Router({
     {
       path: '/not-found',
       name: 'not-found',
+      component: () => import('./views/NotFound.vue')
+    },
+    {
+      path: '*',
       component: () => import('./views/NotFound.vue')
     },
     {

@@ -8,6 +8,9 @@ import VueDisqus from 'vue-disqus'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueHead from 'vue-head'
+import 'autotrack/lib/plugins/event-tracker';
+import 'autotrack/lib/plugins/outbound-link-tracker';
+import 'autotrack/lib/plugins/url-change-tracker';
 
 Vue.use(VueAxios, axios)
 Vue.use(VueHead)

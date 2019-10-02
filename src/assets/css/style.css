@@ -517,23 +517,22 @@ h3 {
   display: none;
   left: 0;
   right: 0;
-  padding: var(--gutter-xs);
-  padding-top: var(--gutter-md);
   position: fixed;
   top: 0;
   z-index: 3;
 }
 
-@media only screen and (min-width: 770px) {
-  .post-gallery .lightbox {
-    padding: var(--gutter-md);
-  }
+.post-gallery .lightbox-image-wrapper {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  height: 100vh;
+  justify-content: center;
 }
 
 .post-gallery .lightbox img {
-  height: auto;
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  max-width: none;
   width: auto;
 }
 

@@ -500,6 +500,8 @@ h3 {
 }
 
 .post-gallery figure {
+  margin: 0;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
@@ -514,8 +516,7 @@ h3 {
 .post-gallery-caption {
   color: var(--light-color);
   font-style: italic;
-  height: 3rem;
-  margin-top: -3rem;
+  height: auto;
   text-shadow: 0 0 0.5rem #000;
   transition: all 0.5s ease-in-out 0s;
 }

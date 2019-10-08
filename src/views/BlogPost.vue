@@ -1,6 +1,6 @@
 <template>
   <div class="post-wrapper" v-bind:style="[{'background-color': fields.bgColor},{'background-image': 'url(' + fields.imageUrl + ')' }]">
-    <div class="post-color-fade" v-bind:style="[{'background': 'linear-gradient(to top, ' + fields.bgColor + ' 80%, transparent)'},{'color': fields.textColor }]">
+    <div class="post-color-fade" v-bind:style="[{'background': 'linear-gradient(to top, ' + fields.bgColor + ' 90%, transparent)'},{'color': fields.textColor }]">
       <div class="post-toolbar">
         <div class="v-loop-wrapper button-previous">
           <div v-for="(item, index) in posts" :key="index">
@@ -59,7 +59,7 @@
             <figcaption class="post-gallery-caption">
               {{ item.gallery_caption }}
             </figcaption>
-            <p class="post-blog-text" v-bind:style="{ color: fields.textColor }">
+             <p class="post-blog-text" v-bind:style="{ color: fields.textColor }">
               <prismic-rich-text :field="item.blog_text"/>
             </p>
             <div class="lightbox" v-bind:class="{ lightboxOpen : showLightbox }">

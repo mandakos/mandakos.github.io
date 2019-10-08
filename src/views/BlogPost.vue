@@ -59,6 +59,9 @@
             <figcaption class="post-gallery-caption">
               {{ item.gallery_caption }}
             </figcaption>
+            <p class="post-blog-text" v-bind:style="{ color: fields.textColor }">
+              <prismic-rich-text :field="item.blog_text"/>
+            </p>
             <div class="lightbox" v-bind:class="{ lightboxOpen : showLightbox }">
               <div class="close-lightbox" v-on:click="showLightbox = !showLightbox">
                 <svg class="svg-icon" viewBox="0 0 20 20">

@@ -73,16 +73,17 @@
               </div>
             </div>
           </figure>
-          <div class="disqus-comments">
-            <vue-disqus shortname="papanavaaranpuput" :identifier="documentId" url="https://mandakos.netlify.com/"></vue-disqus>
-          </div>
         </div>
+        <div class="commentbox"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import commentBox from 'commentbox.io';
+commentBox('5699670223355904-proj');
+
 export default {
   name: 'BlogPost',
   data () {
@@ -187,6 +188,12 @@ export default {
         })
       }, 1000);
     }
+  },
+  mounted () {
+    this.removeCommentBox = commentBox('5699670223355904-proj');
+  },
+  beforeDestroy () {
+    this.removeCommentBox();
   },
   created () {
     this.getContent(this.$route.params.uid)

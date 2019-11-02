@@ -4,13 +4,12 @@ import linkResolver from './prismic/link-resolver'
 import htmlSerializer from './prismic/html-serializer'
 import App from './App.vue'
 import router from './router'
-import VueDisqus from 'vue-disqus'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueHead from 'vue-head'
-import 'autotrack/lib/plugins/event-tracker';
-import 'autotrack/lib/plugins/outbound-link-tracker';
-import 'autotrack/lib/plugins/url-change-tracker';
+import 'autotrack/lib/plugins/event-tracker'
+import 'autotrack/lib/plugins/outbound-link-tracker'
+import 'autotrack/lib/plugins/url-change-tracker'
 
 Vue.use(VueAxios, axios)
 Vue.use(VueHead)
@@ -22,8 +21,6 @@ Vue.use(PrismicVue, {
   linkResolver,
   htmlSerializer
 })
-
-Vue.use(VueDisqus)
 
 new Vue({
   router,

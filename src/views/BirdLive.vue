@@ -3,7 +3,6 @@
     <div class="bird-live-header">
       <h1>{{ $prismic.richTextAsPlain(fields.title) }}</h1>
     </div>
-    <hr>
     <div class="bird-live-stream">
       <iframe src="https://www.youtube.com/embed/live_stream?channel=UCMUUTa8FeOUgxZJFpRpo9bw" frameborder="0" allowfullscreen></iframe>
     </div>

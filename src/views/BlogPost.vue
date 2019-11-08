@@ -177,7 +177,7 @@ export default {
             },
             "author": {
               "@type": "Person",
-              "name": "Manda K"
+              "name": "Manda Kosola"
             },
             "datePublished": document.data.date
           }

@@ -42,7 +42,7 @@ export default {
       posts: [],
       pages: null,
       totalSize: null,
-      postsPerPage: 4,
+      postsPerPage: 3,
       dateOptions: { year: 'numeric', month: 'short', day: '2-digit' },
       linkResolver: this.$prismic.linkResolver
     }
@@ -69,11 +69,11 @@ export default {
         day: 'numeric'}).format(new Date(value));
     },
     loadMore () {
-      this.postsPerPage = this.postsPerPage + 4
+      this.postsPerPage = this.postsPerPage + 3
       this.getPosts()
     },
     showLess () {
-      this.postsPerPage = 4
+      this.postsPerPage = 3
       this.getPosts()
     },
     pagesLeft () {

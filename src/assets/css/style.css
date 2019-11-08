@@ -868,3 +868,39 @@ footer strong {
     width: auto;
   }
 }
+
+.bird-live {
+  margin: auto;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.bird-live-description {
+  color: #fff;
+}
+
+.bird-live-gallery {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 6rem;
+}
+
+@media only screen and (min-width: 770px) {
+  .bird-live-gallery {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 10rem;
+  }
+}
+
+.bird-live-stream iframe {
+  height: 315px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 770px) {
+  .bird-live-stream iframe {
+    height: 315px;
+    width: 560px;
+  }
+}

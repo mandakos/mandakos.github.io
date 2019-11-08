@@ -82,7 +82,6 @@
 
 <script>
 import commentBox from 'commentbox.io';
-commentBox('5699670223355904-proj');
 
 export default {
   name: 'BlogPost',
@@ -117,6 +116,9 @@ export default {
     },
     script () {
       return [{ t:'application/ld+json', i: JSON.stringify(this.jsonLD) }]
+    },
+    link () { 
+      return [{ rel: 'canonical', href: this.$route, id: 'canonical' }]
     }
   },
   methods: {

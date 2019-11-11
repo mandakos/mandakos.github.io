@@ -888,6 +888,10 @@ footer strong {
   margin-top: 6rem;
 }
 
+.bird-live-gallery-date {
+  color: var(--light-color-transparent);
+}
+
 @media only screen and (min-width: 770px) {
   .bird-live-gallery {
     max-width: 50%;

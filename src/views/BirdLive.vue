@@ -11,6 +11,7 @@
     </div>
     <div class="bird-live-gallery">
       <figure v-for="(item, index) in fields.gallery" :key="'photo-item-' + index">
+        <div class="bird-live-gallery-date">{{ item.pvm }}</div>
         <prismic-image :field="item.kuva" class="post-gallery-image"/>
       </figure>
     </div>
@@ -25,7 +26,7 @@ export default {
       fields: {
         title: null,
         text: null,
-        gallery: []
+        gallery: [],
       }
     }
   },

@@ -48,6 +48,9 @@
         <p class="post-story" v-bind:style="{ color: fields.textColor }">
           <prismic-rich-text :field="fields.story"/>
         </p>
+        <template v-if="Object.keys(fields.videoEmbed).length">
+            <prismic-embed :field="fields.videoEmbed"/>
+        </template>
         <div class="post-gallery">
           <figure v-for="(item, index) in fields.gallery" :key="'photo-item-' + index">
             <prismic-image :field="item.gallery_image.small" class="post-gallery-image"/>
@@ -102,6 +105,7 @@ export default {
         bgColor: null,
         date: null,
         date_formatted: null,
+        videoEmbed: null,
       },
       linkResolver: this.$prismic.linkResolver,
       jsonLD: null
@@ -144,6 +148,7 @@ export default {
             if (document.data.gallery) this.fields.gallery = document.data.gallery
             if (document.data.text_color) this.fields.textColor = document.data.text_color
             if (document.data.bg_color) this.fields.bgColor = document.data.bg_color
+            if (document.data.video) this.fields.videoEmbed = document.data.video
             if (document.data.date) this.fields.date = document.data.date
             if (this.fields.date) {
               this.fields.date_formatted = Intl.DateTimeFormat('fi-FI',{
@@ -201,11 +206,19 @@ export default {
     this.getContent(this.$route.params.uid)
     this.getPosts()
     this.updateHeadTags()
+    commentBox('5699670223355904-proj', {
+      backgroundColor: document.data.bg_color,
+      textColor: document.data.text_color
+    });
   },
   beforeRouteUpdate (to, from, next) {
     this.getContent(to.params.uid)
     this.getPosts()
     this.updateHeadTags()
+    commentBox('5699670223355904-proj', {
+      backgroundColor: document.data.bg_color,
+      textColor: document.data.text_color
+    });
     next()
   }
 }

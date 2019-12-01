@@ -50,6 +50,7 @@
         </p>
         <template v-if="Object.keys(fields.videoEmbed).length">
             <prismic-embed :field="fields.videoEmbed"/>
+            <br>
         </template>
         <div class="post-gallery">
           <figure v-for="(item, index) in fields.gallery" :key="'photo-item-' + index">
@@ -105,7 +106,7 @@ export default {
         bgColor: null,
         date: null,
         date_formatted: null,
-        videoEmbed: null,
+        videoEmbed: {},
       },
       linkResolver: this.$prismic.linkResolver,
       jsonLD: null
@@ -206,19 +207,11 @@ export default {
     this.getContent(this.$route.params.uid)
     this.getPosts()
     this.updateHeadTags()
-    commentBox('5699670223355904-proj', {
-      backgroundColor: document.data.bg_color,
-      textColor: document.data.text_color
-    });
   },
   beforeRouteUpdate (to, from, next) {
     this.getContent(to.params.uid)
     this.getPosts()
     this.updateHeadTags()
-    commentBox('5699670223355904-proj', {
-      backgroundColor: document.data.bg_color,
-      textColor: document.data.text_color
-    });
     next()
   }
 }

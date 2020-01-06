@@ -147,7 +147,19 @@ h3 {
   color: var(--light-color);
   font-size: var(--h3-size);
   letter-spacing: 0.2rem;
+  line-height: 2;
   margin: var(--gutter-sm) 0;
+}
+
+@media only screen and (min-width: 770px) {
+  h3 {
+    line-height: 1;
+  }
+}
+
+.frontpage h3 {
+  display: flex;
+  flex-flow: column;
 }
 
 .btn {
@@ -467,6 +479,11 @@ h3 {
   border-bottom: 0.05rem dashed var(--dark-color);
   color: var(--dark-color);
   text-decoration: none;
+}
+
+.post-content iframe {
+  max-width: 100%;
+  width: 100%;
 }
 
 .post-color-fade {

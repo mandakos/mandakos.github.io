@@ -42,7 +42,7 @@ export default {
       posts: [],
       pages: null,
       totalSize: null,
-      postsPerPage: 3,
+      postsPerPage: 6,
       dateOptions: { year: 'numeric', month: 'short', day: '2-digit' },
       linkResolver: this.$prismic.linkResolver
     }

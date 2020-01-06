@@ -41,5 +41,8 @@ export default new Router({
       name: 'blog-post',
       component: () => import('./views/BlogPost.vue')
     }
-  ]
+  ],
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView();
+  }
 })

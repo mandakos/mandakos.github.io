@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-bind:style="{'background-image': 'url(' + fields.headerImageUrl + ')' }">
-    <div class="app-wrapper">
+    <div class="app-wrapper" style="min-height: 100vh;">
       <div class="app-top">
         <Navigation />
         <transition name="fade" mode="out-in">

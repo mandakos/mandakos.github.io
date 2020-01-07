@@ -80,6 +80,41 @@
         </div>
         <div class="commentbox"></div>
       </div>
+      <div class="post-toolbar">
+        <div class="v-loop-wrapper button-previous">
+          <div v-for="(item, index) in posts" :key="index">
+            <template v-if="item.id == documentId">
+              <template v-if="posts[index-1]">
+                <router-link :to="linkResolver(posts[index-1])" class="previous-link">
+                  Edellinen
+                </router-link>
+              </template>
+              <template v-else>
+                <div class="button-previous-disabled">Edellinen</div>
+              </template>
+            </template>
+          </div>
+        </div>
+        <div class="button-close">
+          <router-link to="/">
+            Takaisin
+          </router-link>
+        </div>
+        <div class="v-loop-wrapper button-next">
+          <div v-for="(item, index) in posts" :key="index">
+            <template v-if="item.id == documentId">
+              <template v-if="posts[index+1]">
+                <router-link :to="linkResolver(posts[index+1])" class="next-link">
+                  Seuraava
+                </router-link>
+              </template>
+              <template v-else>
+                <div class="button-next-disabled">Seuraava</div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

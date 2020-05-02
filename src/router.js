@@ -37,6 +37,16 @@ export default new Router({
       component: () => import('./views/BirdLive.vue')
     },
     {
+      path: '/lintuhaku',
+      name: 'lintuhaku',
+      component: () => import('./views/SpeechSearchHome.vue')
+    },
+    {
+      path: '/lintuhaku/puhu',
+      name: 'lintuhaku-puhu',
+      component: () => import('./views/SpeechSearch.vue')
+    },
+    {
       path: '/:uid',
       name: 'blog-post',
       component: () => import('./views/BlogPost.vue')

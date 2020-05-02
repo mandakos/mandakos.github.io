@@ -1,0 +1,423 @@
+/* Colors */
+@body-bg-base: rgba(3,116,138,1);
+@body-bg-secondary: rgba(0,50,85,1);
+@transparent-black: rgba(0,0,0,0.1);
+@body-color: #F5F6F7;
+@link-color: #60D269;
+@link-hover-color: #21912A;
+@btn-bg: #21912A;
+@btn-color: #fff;
+@btn-cancel-bg: @body-bg-secondary;
+@btn-cancel-color: #fff;
+@rec-icon-bg: rgba(76, 191, 84, 0.2);
+@rec-icon-bg-2: rgba(76, 191, 84, 1);
+@rec-icon-inner-bg: rgb(33, 145, 42);
+@rec-icon-inner-inner-bg: #1a601e;
+
+/* Gutter */
+@gutter-xs: 0.5rem;
+@gutter-sm: 1.5rem;
+@gutter-md: 4rem;
+@gutter-lg: 10rem;
+
+/* Border */
+@btn-border-radius: 0.5rem;
+
+/* Transitions */
+@transition-normal: all 0.4s ease;
+@btn-transform: scale(0.98);
+@btn-shadow: 5px 5px 5px @transparent-black;
+
+/* Fonts */
+@font: 'Nunito Sans', sans-serif;
+@font-bold: 'Oswald', sans-serif;
+@font-decorative: 'Montserrat Alternates', sans-serif;
+@btn-font: @font;
+@btn-font-weight: 900;
+@font-xxs: 0.8rem;
+@font-xs: 1rem;
+@font-sm: 1.4rem;
+@font-md: 2rem;
+@font-lg: 3rem;
+@font-xl: 4rem;
+
+/* Device widths */
+@tablet: 770px;
+@small-desktop: 990px;
+@desktop: 1200px;
+
+body {
+  background: @body-bg-base;
+  background: radial-gradient(circle, rgba(3,116,138,1) 0%, rgba(0,50,85,1) 100%);
+  color: @body-color;
+  font-family: @font;
+  font-size: @font-xs;
+  height: 100vh;
+  margin: 0;
+}
+
+#app {
+  text-align: center;
+}
+
+.speechSearchView {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+a {
+  color: @link-color;
+  cursor: pointer;
+  text-decoration: none;
+  transition: @transition-normal;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: @link-hover-color;
+  }
+}
+
+p {
+  margin-bottom: @gutter-sm;
+}
+
+#nav {
+  padding: @gutter-sm;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  a {
+    color: #fff;
+  }
+
+  .close-icon {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+.btn {
+  border-radius: @btn-border-radius;
+  display: block;
+  font-family: @btn-font;
+  font-size: 1rem;
+  font-weight: @btn-font-weight;
+  letter-spacing: 0.1rem;
+  margin: auto;
+  padding: @gutter-sm;
+  text-align: center;
+  text-transform: uppercase;
+
+  &-start {
+    cursor: pointer;
+    margin-bottom: @gutter-md;
+    padding: @gutter-xs;
+    transition: all 0.4s ease;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @btn-bg;
+      color: #fff;
+    }
+
+    &:disabled {
+      cursor: auto;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: #fff;
+        color: @btn-bg;
+      }
+    }
+  }
+
+  &-cancel {
+    background-color: @btn-cancel-bg;
+    border-color: transparent;
+    color: @btn-cancel-color;
+    margin-top: @gutter-sm;
+    padding: @gutter-xs @gutter-sm;
+  }
+}
+
+.recording-icon {
+  &-circle {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-mic {
+    font-size: 3rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  &-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 160px;
+    margin: auto;
+    position: relative;
+    width: 160px;
+  }
+
+  .inner-circle {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@keyframes lgCircleSize {
+  from {
+    background-color: @rec-icon-bg;
+    height: 125px;
+    width: 125px;
+  }
+  to {
+    background-color: @rec-icon-bg-2;
+    height: 160px;
+    width: 160px;
+  }
+}
+
+.recognizing {
+  .recording-icon {
+    background-color: @rec-icon-bg;
+    height: 150px;
+    width: 150px;
+    animation-name: lgCircleSize;
+
+    &-circle {
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    &-inner {
+      background-color: @rec-icon-inner-bg;
+      height: 120px;
+      width: 120px;
+  
+      &-inner {
+        background-color: @rec-icon-inner-inner-bg;
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+}
+
+/* Home page */
+.speech-home {
+  padding: @gutter-sm;
+  width: 100%;
+
+  @media only screen and (min-width: @tablet) {
+    margin: auto;
+    max-width: 60%;
+  }
+
+  &-wrapper {
+    width: 100%;
+  }
+
+  &-icon {
+    color: @btn-color;
+  }
+
+  &-button {
+    background-color: @btn-bg;
+    color: @btn-color;
+    margin: @gutter-md auto;
+    max-width: 70%;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: @btn-shadow;
+      color: @btn-color;
+      transform: @btn-transform;
+    }
+  }
+
+  &-license-description {
+    background-color: @transparent-black;
+    bottom: 0;
+    font-size: @font-xxs;
+    left: 0;
+    margin-top: auto;
+    padding: @gutter-sm @gutter-sm;
+    position: relative;
+    right: 0;
+  }
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: @font-bold;
+}
+
+h1 {
+  font-size: @font-lg;
+  line-height: @font-lg;
+
+  @media only screen and (min-width: @tablet) {
+    font-size: @font-xl;
+    line-height: @font-xl;
+  }
+
+  &.search-title {
+    font-size: @font-md;
+    line-height: @font-md;
+  }
+}
+
+.ingress {
+  color: @btn-bg;
+  font-family: @font-decorative;
+  font-size: @font-sm;
+
+  @media only screen and (min-width: @tablet) {
+    font-size: 1.5rem;
+    line-height: @font-md;
+  }
+}
+
+/* Speech recognition results */
+.result-container {
+  padding: @gutter-sm;
+
+  @media only screen and (min-width: @tablet) {
+    margin: auto;
+    max-width: 900px;
+    width: 60%;
+  }
+}
+
+.speech-result-correct {
+  text-transform: uppercase;
+}
+
+.scientific-name {
+  font-family: @font-decorative;
+}
+
+.bird-image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.bird-image-author {
+  display: none;
+}
+
+.bird-image-container {
+  height: 0;
+  margin-top: 1rem;
+  transition: height 1.2s ease-in-out;
+}
+
+.birdSearchSpeech {
+  transition: @transition-normal;
+}
+
+.bird-description {
+  background-color: #232428;
+  opacity: 0;
+  transition: opacity 1s linear 1.2s;
+}
+
+.search-title {
+  display: none;
+}
+
+.bird-description {
+  padding: @gutter-sm;
+  opacity: 1;
+}
+
+.bird-description-author,
+.bird-image-author {
+  background-color: @transparent-black;
+  font-size: @font-xxs;
+  padding: @gutter-sm @gutter-sm;
+}
+
+.bird-image-author {
+  display: block;
+  margin: 0;
+  padding: @gutter-xs @gutter-sm;
+}
+
+.bird-image-container {
+  height: auto;
+  overflow: hidden;
+}
+
+.name-and-sound {
+  @media only screen and (min-width: @tablet) {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.bird-name {
+  @media only screen and (min-width: @tablet) {
+    max-width: 70%;
+  }
+
+  &-title,
+  &-scientific {
+    @media only screen and (min-width: @tablet) {
+      text-align: left;
+    }
+  }
+
+  &-title {
+    margin-bottom: 0;
+  }
+}
+
+.bird-listen-desc {
+  margin-right: 0;
+
+  @media only screen and (min-width: @tablet) {
+    max-width: 50%;
+  }
+}
+
+.bird-audio {
+  background-color: #dddcd4;
+  padding-top: @gutter-sm;
+  width: 100%;
+}
+
+.btn-play,
+.btn-pause {
+  font-size: 1.2rem;
+}
+
+.btn-refresh {
+  margin-left: 4rem;
+}
+
+.speech-synthesis {
+  display: block;
+  margin-top: 2.5rem;
+}

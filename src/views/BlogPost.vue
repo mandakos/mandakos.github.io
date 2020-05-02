@@ -198,13 +198,6 @@ export default {
           }
         })
     },
-    documentClick (e){
-        let el = this.$refs.lightboxImage
-        let target = e.target
-        if (!this.$el.contains(event.target)) {
-          this.showLightbox = false
-        }
-      },
     getJsonLD (document) {
       return {
             "@context": "https://schema.org",

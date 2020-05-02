@@ -17,7 +17,8 @@
       </div>
     </div>
     <div v-else class="blog-list">
-      Pahoittelut! Jotain meni pieleen, blogilistaa ei voida juuri nyt näyttää.
+      <font-awesome-icon icon="crow" class="blog-crow-icon" />
+      <p>Ladataan...</p>
     </div>
     <div v-if="pagesLeft() && moreThanPagination()" class="load-more" @click="loadMore()">
       <svg class="svg-icon" viewBox="0 0 20 20">

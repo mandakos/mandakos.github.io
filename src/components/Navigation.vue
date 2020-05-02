@@ -32,9 +32,7 @@ export default {
   },
   methods: {
       documentClick(e){
-        let el = this.$refs.sideNavigation
-        let target = e.target
-        if (!this.$el.contains(event.target)) {
+        if (!this.$el.contains(e.target)) {
           this.isActive = false
         }
       }

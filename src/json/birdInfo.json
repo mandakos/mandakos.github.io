@@ -1,0 +1,122 @@
+{
+  "Harakka": {
+    "name": [
+      "harakka"
+    ],
+    "type": [
+      "varislintu"
+    ],
+    "colors": [
+      "musta",
+      "valkoinen",
+      "mustavalkoinen",
+      "metallinkiiltoinen"
+    ],
+    "sound": [
+      "räkättävä"
+    ],
+    "characteristic": [
+      "pitkä",
+      "pyrstö"
+    ]
+  },
+
+  "Varis": {
+    "name": [
+      "varis"
+    ],
+    "type": [
+      "iso",
+      "varislintu"
+    ],
+    "colors": [
+      "musta",
+      "harmaa",
+      "kirjava"
+    ],
+    "sound": [
+      "raakkuva"
+    ],
+    "characteristic": [
+    ]
+  },
+
+  "Mustarastas": {
+    "name": [
+      "mustarastas"
+    ],
+    "type": [
+      "rastas",
+      "rastasmainen",
+      "rastaan"
+    ],
+    "colors": [
+      "musta",
+      "keltainen",
+      "keltaoranssi",
+      "oranssi"
+    ],
+    "sound": [
+      "säksätys",
+      "huilumainen",
+      "kuuluva"
+    ],
+    "characteristic": [
+      "keltainen",
+      "oranssi",
+      "nokka"
+    ]
+  },
+  "Pikkuvarpunen": {
+    "name": [
+      "pikkuvarpunen"
+    ],
+    "type": [
+      "pieni",
+      "pikkulintu"
+    ],
+    "colors": [
+      "musta",
+      "ruskea",
+      "valkoinen",
+      "kirjava"
+    ],
+    "sound": [
+      "säksätys",
+      "silputus"
+    ],
+    "characteristic": [
+      "pilkku",
+      "piste",
+      "poskessa"
+    ]
+  },
+  "Meriharakka": {
+    "name": [
+      "meriharakka"
+    ],
+    "type": [
+      "kahlaaja",
+      "vesilintu"
+    ],
+    "colors": [
+      "musta",
+      "valkoinen",
+      "mustavalkoinen",
+      "oranssi",
+      "punainen"
+    ],
+    "sound": [
+      "kimakka",
+      "kuuluva"
+    ],
+    "characteristic": [
+      "pitkä",
+      "pitkät",
+      "jalat",
+      "pitkäjalkainen",
+      "nokka",
+      "pitkänokkainen"
+    ]
+  }
+}

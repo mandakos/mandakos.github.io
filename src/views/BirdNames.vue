@@ -60,7 +60,7 @@ export default {
         this.jsonData = response.data
       })
     },
-    onChange(event, selected) {
+    onChange(event) {
       this.selected = event.target.value
     }
   },

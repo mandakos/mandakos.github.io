@@ -941,3 +941,10 @@ footer strong {
     width: 560px;
   }
 }
+
+.blog-crow-icon {
+  font-size: 10rem;
+  height: 16rem;
+  opacity: 0.4;
+  width: 16rem;
+}

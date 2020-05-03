@@ -19,18 +19,20 @@ export class SpeechRecognizer
   result = null;
   resultContainer = null;
   mic = null;
+  notSupported = null;
 
   recognition = null;
   grammar = null;
   speechRecognitionList = null;
 
-  constructor(startBtn, result, stopBtn, container, mic) 
+  constructor(startBtn, result, stopBtn, container, mic, notSupported) 
   {
     this.startBtn = startBtn;
     this.result = result;
     this.stopBtn = stopBtn;
     this.resultContainer = container;
     this.mic = mic;
+    this.notSupported = notSupported;
   }
 
   startRecognizing() {
@@ -126,8 +128,7 @@ export class SpeechRecognizer
       */
     }
     else {
-      this.result.innerHTML = 'Valitettavasti selaimesi ei tue puheentunnistusta.'+
-                               '<a href="/lintuhaku">Palaa takaisin</a>';
+      this.notSupported.style.display = "block"; 
     }
   }
 

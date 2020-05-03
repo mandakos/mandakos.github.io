@@ -10,8 +10,8 @@ export function startSpeech(text){
   if (text !== '') {
     var utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'fi-FI'; // Finnish voice
-    utterance.pitch = 1.1;
-    utterance.rate = 0.8;
+    utterance.pitch = 1.0;
+    utterance.rate = 0.9;
     synth.speak(utterance);
   }
 }

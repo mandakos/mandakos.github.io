@@ -2,10 +2,7 @@
   <div class="speech-home-wrapper">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Nunito+Sans:wght@400;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <div class="speech-home">
-      <h1>
-        <font-awesome-icon icon="crow" class="crow-icon" />
-        <font-awesome-icon icon="microphone" class="speech-home-icon" />
-      </h1>
+
       <h1>
         Lintuhaku puheen tunnistuksella
       </h1>

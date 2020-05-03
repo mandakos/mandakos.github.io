@@ -1,8 +1,5 @@
 {
   "Harakka": {
-    "name": [
-      "harakka"
-    ],
     "type": [
       "varislintu"
     ],
@@ -16,15 +13,33 @@
       "räkättävä"
     ],
     "characteristic": [
-      "pitkä",
-      "pyrstö"
+      "pitkäpyrstöinen"
+    ]
+  },
+
+  "Fasaani": {
+    "type": [
+      "kanalintu",
+      "iso"
+    ],
+    "colors": [
+      "ruskea",
+      "sininen",
+      "punainen",
+      "valkoinen",
+      "kirjava"
+    ],
+    "sound": [
+      "rääkäisy",
+      "kotkottava"
+    ],
+    "characteristic": [
+      "pitkäpyrstöinen",
+      "tupsut"
     ]
   },
 
   "Varis": {
-    "name": [
-      "varis"
-    ],
     "type": [
       "iso",
       "varislintu"
@@ -42,9 +57,6 @@
   },
 
   "Mustarastas": {
-    "name": [
-      "mustarastas"
-    ],
     "type": [
       "rastas",
       "rastasmainen",
@@ -68,9 +80,6 @@
     ]
   },
   "Pikkuvarpunen": {
-    "name": [
-      "pikkuvarpunen"
-    ],
     "type": [
       "pieni",
       "pikkulintu"
@@ -92,9 +101,6 @@
     ]
   },
   "Meriharakka": {
-    "name": [
-      "meriharakka"
-    ],
     "type": [
       "kahlaaja",
       "vesilintu"

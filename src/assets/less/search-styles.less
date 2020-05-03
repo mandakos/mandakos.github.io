@@ -241,7 +241,7 @@ p {
   &-button {
     background-color: @btn-bg;
     color: @btn-color;
-    margin: @gutter-md auto;
+    margin: @gutter-sm auto;
     max-width: 70%;
 
     &:hover,
@@ -271,8 +271,9 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: @font-lg;
+  font-size: 2.5rem;
   line-height: @font-lg;
+  margin-top: 1rem;
 
   @media only screen and (min-width: @tablet) {
     font-size: @font-xl;
@@ -288,7 +289,7 @@ h1 {
 .ingress {
   color: @btn-bg;
   font-family: @font-decorative;
-  font-size: @font-sm;
+  font-size: 1.3rem;
 
   @media only screen and (min-width: @tablet) {
     font-size: 1.5rem;
@@ -420,4 +421,27 @@ h1 {
 .speech-synthesis {
   display: block;
   margin-top: 2.5rem;
+}
+
+.best-matches {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+
+  &-li {
+    &:after {
+      content: ',';
+      display: inline-block;
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+
+  li {
+    margin-right: 1rem;
+  }
 }

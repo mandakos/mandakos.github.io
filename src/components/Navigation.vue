@@ -1,13 +1,13 @@
 <template>
   <nav class="navigation">
     <div class="sideNavigation" v-bind:class="{ sideNavOpen : isActive }" ref="sideNavigation">
+      <Author />
       <ul>
         <li v-on:click="isActive = !isActive"><router-link to="/">Blogi</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/about">Tietoa</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/birdnames">Lintulajien kääntäjä</router-link></li>
         <li v-on:click="isActive = !isActive"><router-link to="/birdlive">LintuLive</router-link></li>
       </ul>
-      <Author />
     </div>
     <a href="#" class="toggleNav" v-on:click="isActive = !isActive" v-bind:class="{ active : isActive }">
       <svg class="svg-icon" viewBox="0 0 20 20">

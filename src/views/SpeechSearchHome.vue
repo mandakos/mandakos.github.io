@@ -12,8 +12,7 @@
       <p class="ingress">Helppo lintuhaku, ilman kirjoittamista</p>
       <router-link to="/lintuhaku/puhu" class="speech-home-button btn">ALOITA LINTUHAKU</router-link>
       <p>
-        Hae lintulajeja nopeasti puheella. 
-        Klikkaa ylläolevaa nappia, ja kerro haettavan linnun nimi tai tuntomerkkejä (beta-ominaisuus).
+        Hae lintulajeja joko nimellä tai tuntomerkeillä (beta-ominaisuus).
       </p>
       <p>
         <b>VINKKI!</b> Jos haluat kuunnella linnun kuvauksen, sano myös "kuuntele". Esimerkiksi

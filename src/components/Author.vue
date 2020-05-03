@@ -1,9 +1,10 @@
 <template>
   <div class="author">
     <div class="author-image" v-bind:style="{'background-image': 'url(' + fields.image + ')' }"></div>
-    <p class="author-name">
+    <a class="site-author-name" href="/">
       {{ $prismic.richTextAsPlain(fields.name) }}
-    </p>
+    </a>
+    <!--
     <p class="author-text">
       {{ $prismic.richTextAsPlain(fields.text) }}
     </p>
@@ -14,6 +15,7 @@
         </prismic-link>
       </li>
     </div>
+    -->
   </div>
 </template>
 

@@ -667,15 +667,21 @@ h3 {
 
 /* Author */
 .author {
-  bottom: 0;
   background-color: var(--light-color-transparent);
+  color: #000;
   opacity: 0;
   padding: var(--gutter-sm);
-  position: absolute;
   text-align: center;
   transition: all 0.5s ease-in 1s;
   width: 100%;
   z-index: -1;
+}
+
+.site-author-name {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .sideNavOpen .author {

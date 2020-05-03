@@ -19,6 +19,13 @@
       <button class="btn btn-cancel" v-on:click="cancelRecognition" ref="stop" style="display: none;">Peruuta</button>
       <p class="speech-result" id="detect-speech" ref="output" v-show="!isBird"></p>
       <div v-if="isBird">
+        <ul v-if="bestMatches.length > 0" class="best-matches">
+          <li>Katso myös: </li>
+          <li class="best-matches-li" v-for="item in bestMatches" :key="item">
+            <a href="#" class="best-matches-link" @click="getBirdInfo(item)">{{item}}</a>
+          </li>
+        </ul>
+
         <div class="name-and-sound">
           <div class="bird-name">
             <h1 class="bird-name-title speech-result-correct">{{birdFIname}}</h1>
@@ -55,7 +62,7 @@
 
 <script>
 import {SpeechRecognizer} from '@/js/recognizeSpeech.js'
-import {getBirdByName} from '@/js/getBirdInfo.js'
+import {getBirdFromSpeech} from '@/js/getBirdInfo.js'
 import {startSpeech} from '@/js/speak.js';
 import {pauseSpeech} from '@/js/speak.js';
 import {resumeSpeech} from '@/js/speak.js';
@@ -88,7 +95,8 @@ export default {
         recognizer: null,
         isBird: false,
         isSpeaking: false,
-        speakStarted: false
+        speakStarted: false,
+        bestMatches: ''
     };
   },
   methods: {
@@ -117,7 +125,7 @@ export default {
       this.recognizer.abortRecognizing();
     },
     getBirdInfo: function(speech) {
-      var birdInfo = getBirdByName(speech);
+      var birdInfo = getBirdFromSpeech(speech.toLowerCase());
 
       if(birdInfo) {
 
@@ -160,6 +168,10 @@ export default {
           this.startSpeech();
         }
 
+        if(birdInfo.bestMatches) {
+          this.bestMatches = birdInfo.bestMatches;
+        }
+
         this.isBird = true;
       }
     },
@@ -191,7 +203,7 @@ export default {
     getBirdSound: function(sciName) {
       var apiBase = 'https://www.xeno-canto.org/api/2/recordings?query=';
       var apiName = sciName.split(' ').join('+');
-      var apiUrl = apiBase + apiName.toLowerCase();
+      var apiUrl = apiBase + apiName.toLowerCase() + '&cnt=finland';
 
       axios
       .get(apiUrl)
